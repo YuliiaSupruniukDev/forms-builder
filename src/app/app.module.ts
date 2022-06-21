@@ -7,7 +7,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AuthComponent } from './core/pages/auth/auth.component';
 import { MainComponent } from './core/pages/main/main.component';
 import { HeaderComponent } from './core/components/header/header.component';
-import { FooterComponent } from './core/components/footer/footer.component';
 
 import {MatIconModule} from '@angular/material/icon';
 
@@ -17,7 +16,6 @@ import {MatIconModule} from '@angular/material/icon';
     AuthComponent,
     MainComponent,
     HeaderComponent,
-    FooterComponent
   ],
   imports: [
     BrowserModule,
