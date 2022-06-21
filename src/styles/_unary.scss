@@ -1,0 +1,5 @@
+@use "./variables.scss" as variables;
+
+.border {
+  border: 1px solid variables.$gray;
+}
