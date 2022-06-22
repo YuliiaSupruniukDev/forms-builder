@@ -1,0 +1,17 @@
+import { Component, Input, OnInit } from '@angular/core';
+import { SimpleInput } from 'src/app/core/interfaces/fields.interfaces';
+
+@Component({
+  selector: 'app-input',
+  templateUrl: './input.component.html',
+  styleUrls: ['./input.component.scss']
+})
+export class InputComponent implements OnInit {
+
+  @Input() configs: SimpleInput
+  constructor() { }
+
+  ngOnInit(): void {
+  }
+
+}
