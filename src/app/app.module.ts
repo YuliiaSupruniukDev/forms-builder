@@ -11,9 +11,19 @@ import { HeaderComponent } from './core/components/header/header.component';
 import { MatIconModule } from '@angular/material/icon';
 import { FormsModule } from '@angular/forms';
 import { SharedModule } from './shared/modules/shared/shared.module';
+import { FormBuilderComponent } from './core/components/form-builder/form-builder.component';
+import { FormFieldsComponent } from './core/components/form-fields/form-fields.component';
+import { StylingModule } from './core/components/styling/styling.module';
 
 @NgModule({
-  declarations: [AppComponent, AuthComponent, MainComponent, HeaderComponent],
+  declarations: [
+    AppComponent,
+    AuthComponent,
+    MainComponent,
+    HeaderComponent,
+    FormBuilderComponent,
+    FormFieldsComponent,
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -21,6 +31,7 @@ import { SharedModule } from './shared/modules/shared/shared.module';
     FormsModule,
     MatIconModule,
     SharedModule,
+    StylingModule
   ],
   providers: [],
   bootstrap: [AppComponent],
