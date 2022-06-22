@@ -14,7 +14,8 @@ import { SharedModule } from './shared/modules/shared/shared.module';
 import { FormBuilderComponent } from './core/components/form-builder/form-builder.component';
 import { FormFieldsComponent } from './core/components/form-fields/form-fields.component';
 import { StylingModule } from './core/components/styling/styling.module';
-import { PanelStatePipe } from './shared/pipes/panel-state.pipe';
+import { CommonModule } from '@angular/common';
+import { DragDropModule } from '@angular/cdk/drag-drop';
 
 @NgModule({
   declarations: [
@@ -26,13 +27,15 @@ import { PanelStatePipe } from './shared/pipes/panel-state.pipe';
     FormFieldsComponent
   ],
   imports: [
+    CommonModule,
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     FormsModule,
     MatIconModule,
     SharedModule,
-    StylingModule
+    StylingModule,
+    DragDropModule
   ],
   providers: [],
   bootstrap: [AppComponent],
