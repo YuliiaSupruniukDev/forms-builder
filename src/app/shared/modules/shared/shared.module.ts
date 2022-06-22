@@ -7,10 +7,25 @@ import { TextareaComponent } from '../../components/textarea/textarea.component'
 import { SelectComponent } from '../../components/select/select.component';
 import { CheckboxComponent } from '../../components/checkbox/checkbox.component';
 import { ButtonComponent } from '../../components/button/button.component';
+import { PanelStatePipe } from '../../pipes/panel-state.pipe';
 
 @NgModule({
-  declarations: [InputComponent, TextareaComponent,  CheckboxComponent, SelectComponent, ButtonComponent],
+  declarations: [
+    InputComponent,
+    TextareaComponent,
+    CheckboxComponent,
+    SelectComponent,
+    ButtonComponent,
+    PanelStatePipe,
+  ],
   imports: [CommonModule, MaterialUIModule],
-  exports: [InputComponent, TextareaComponent, CheckboxComponent, SelectComponent, ButtonComponent],
+  exports: [
+    InputComponent,
+    TextareaComponent,
+    CheckboxComponent,
+    SelectComponent,
+    ButtonComponent,
+    PanelStatePipe,
+  ],
 })
 export class SharedModule {}

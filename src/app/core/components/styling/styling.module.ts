@@ -13,7 +13,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     FormsModule,
     ReactiveFormsModule,
     MaterialUIModule,
-    SharedModule,
+    SharedModule
   ],
   exports: [StylingComponent],
 })

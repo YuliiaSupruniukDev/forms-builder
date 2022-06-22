@@ -6,13 +6,23 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./styling.component.scss'],
 })
 export class StylingComponent implements OnInit {
-  panelOpenState = false;
+  formStylePanelState = false;
+  fieldStylePanelState = false;
 
   constructor() {}
 
   ngOnInit(): void {}
 
-  get state() {
-    return this.panelOpenState ? 'close' : 'open';
+  togglePanel(option: 'form' | 'field') {
+    switch (option) {
+      case 'form':
+        this.formStylePanelState = !this.formStylePanelState;
+        break;
+      case 'field':
+        this.fieldStylePanelState = !this.fieldStylePanelState;
+        break;
+      default:
+        break;
+    }
   }
 }

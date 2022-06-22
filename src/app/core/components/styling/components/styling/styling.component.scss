@@ -5,3 +5,8 @@
 .mat-expansion-panel:not([class*="mat-elevation-z"]) {
   box-shadow: none;
 }
+
+.mat-expansion-panel-header-description {
+  display: flex;
+  justify-content: flex-end;
+}

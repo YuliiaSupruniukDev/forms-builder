@@ -7,13 +7,21 @@
   <div class="flex">
     <mat-form-field [style.width.%]="47" appearance="fill">
       <mat-label>Text Color</mat-label>
-      <input formControlName="color" matInput placeholder="Text Color" />
+      <input
+        formControlName="color"
+        matInput
+        placeholder="(255, 255, 255)"
+      />
       <span matSuffix>RGB</span>
     </mat-form-field>
 
     <mat-form-field [style.width.%]="47" appearance="fill">
       <mat-label>Background</mat-label>
-      <input formControlName="backgroundColor" matInput />
+      <input
+        formControlName="backgroundColor"
+        placeholder="(255, 255, 255)"
+        matInput
+      />
       <span matSuffix>RGB</span>
     </mat-form-field>
   </div>
@@ -31,12 +39,16 @@
 
     <mat-form-field [style.width.%]="47" appearance="fill">
       <mat-label>Border color</mat-label>
-      <input formControlName="borderColor" matInput />
+      <input
+        formControlName="borderColor"
+        placeholder="(255, 255, 255)"
+        matInput
+      />
       <span matSuffix>RGB</span>
     </mat-form-field>
   </div>
 
   <div class="button">
-    <button mat-stroked-button (click)="submit()">Apply</button>
+    <button mat-stroked-button (click)="submit()" [disabled]="!form.valid">Apply</button>
   </div>
 </form>

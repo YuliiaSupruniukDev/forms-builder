@@ -14,6 +14,7 @@ import { SharedModule } from './shared/modules/shared/shared.module';
 import { FormBuilderComponent } from './core/components/form-builder/form-builder.component';
 import { FormFieldsComponent } from './core/components/form-fields/form-fields.component';
 import { StylingModule } from './core/components/styling/styling.module';
+import { PanelStatePipe } from './shared/pipes/panel-state.pipe';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,7 @@ import { StylingModule } from './core/components/styling/styling.module';
     MainComponent,
     HeaderComponent,
     FormBuilderComponent,
-    FormFieldsComponent,
+    FormFieldsComponent
   ],
   imports: [
     BrowserModule,
