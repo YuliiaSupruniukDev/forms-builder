@@ -1,3 +1,5 @@
+import { Appearance } from "../enums/style.enums";
+
 export interface CustomInput {
   label: string;
   width: number;
@@ -5,12 +7,13 @@ export interface CustomInput {
   fontWeight: number;
   fontSize: number;
   color: string;
-  borderStyle: string;
+  appearance: Appearance;
   isRequired: boolean;
 }
 
 export interface SimpleInput extends CustomInput {
   placeholder: string;
+  suffix: string;
 }
 
 export interface Textarea extends CustomInput {}
