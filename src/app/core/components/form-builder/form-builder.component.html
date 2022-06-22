@@ -1,4 +1,13 @@
 <div class="section">
-    <p>form-builder works!</p>
+  <h3>Form Label</h3>
 
+  <div
+    cdkDropList
+    [cdkDropListData]="fields"
+    (cdkDropListDropped)="onDrop($event)"
+  >
+    <div *ngFor="let field of fields" class="field-item" cdkDrag>
+      {{ field }}
+    </div>
+  </div>
 </div>

@@ -1,3 +1,5 @@
-<div class="section">
-  <p>form-fields works!</p>
+<div cdkDropList [cdkDropListData]="fields">
+  <div class="field-item" *ngFor="let field of fields" cdkDrag>
+    {{ field }}
+  </div>
 </div>
