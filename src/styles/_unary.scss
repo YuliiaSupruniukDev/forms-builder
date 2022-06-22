@@ -1,5 +1,13 @@
 @use "./variables.scss" as variables;
 
+@mixin border($color: variables.$gray) {
+  border: 1px solid $color;
+}
+
 .border {
-  border: 1px solid variables.$gray;
+  @include border();
+}
+
+.borderLight {
+  @include border(variables.$lightGray);
 }
