@@ -1,6 +1,6 @@
-@use "./variables.scss" as variables;
+@import "./variables";
 
-@mixin border($color: variables.$gray) {
+@mixin border($color: $gray) {
   border: 1px solid $color;
 }
 
@@ -9,5 +9,9 @@
 }
 
 .borderLight {
-  @include border(variables.$lightGray);
+  @include border($lightGray);
+}
+
+@mixin fieldItemShadow() {
+  box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
 }

@@ -1,6 +1,23 @@
+@import "./variables";
+
 @mixin center() {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
 }
 
+@mixin block() {
+  border-radius: 4px;
+  border: 1px solid $lightGray;
+  padding: 14px 24px;
+}
+
+.section {
+  @include block();
+}
+
+.field-item {
+  @include block();
+  cursor: pointer;
+  background-color: white;
+}
