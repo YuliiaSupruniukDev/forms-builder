@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { inputConfiguration } from 'src/app/core/constants/formConfigsInitial.constants';
 import { SimpleInput } from 'src/app/core/interfaces/fields.interfaces';
 
 @Component({
@@ -8,7 +9,7 @@ import { SimpleInput } from 'src/app/core/interfaces/fields.interfaces';
 })
 export class InputComponent implements OnInit {
 
-  @Input() configs: SimpleInput
+  @Input() configs: SimpleInput = inputConfiguration
   constructor() { }
 
   ngOnInit(): void {
