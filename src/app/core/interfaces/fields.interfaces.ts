@@ -1,9 +1,10 @@
-import { Appearance } from "../enums/style.enums";
+import { Appearance, WidthUnit } from "../enums/style.enums";
 
 export interface CustomInput {
   label: string;
   width: number;
   height: number;
+  widthUnits: WidthUnit;
   fontWeight: number;
   fontSize: number;
   color: string;

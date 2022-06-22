@@ -1,9 +1,10 @@
-import { Appearance } from '../enums/style.enums';
+import { Appearance, WidthUnit } from '../enums/style.enums';
 
 export const inputConfiguration = {
   label: 'Form Label',
   placeholder: '',
-  width: 395,
+  width: 100,
+  widthUnits: WidthUnit.Percent,
   height: 50,
   fontWeight: 400,
   fontSize: 14,
