@@ -1,5 +1,6 @@
 import { Component, ElementRef, OnInit } from '@angular/core';
 import { DragAndDropService } from 'src/app/shared/services/drag-and-drop.service';
+import { fieldsList } from '../../constants/fieldsList.constant';
 
 @Component({
   selector: 'app-form-fields',
@@ -7,5 +8,5 @@ import { DragAndDropService } from 'src/app/shared/services/drag-and-drop.servic
   styleUrls: ['./form-fields.component.scss'],
 })
 export class FormFieldsComponent {
-  fields = ['Input', 'Textarea', 'Button', 'Checkbox', 'Select'];
+  fields = fieldsList;
 }
