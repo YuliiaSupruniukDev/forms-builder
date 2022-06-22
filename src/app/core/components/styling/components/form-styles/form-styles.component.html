@@ -1,0 +1,42 @@
+<form [formGroup]="form">
+  <mat-form-field [style.width.%]="100" appearance="fill">
+    <mat-label>Form Label</mat-label>
+    <input formControlName="label" matInput />
+  </mat-form-field>
+
+  <div class="flex">
+    <mat-form-field [style.width.%]="47" appearance="fill">
+      <mat-label>Text Color</mat-label>
+      <input formControlName="color" matInput placeholder="Text Color" />
+      <span matSuffix>RGB</span>
+    </mat-form-field>
+
+    <mat-form-field [style.width.%]="47" appearance="fill">
+      <mat-label>Background</mat-label>
+      <input formControlName="backgroundColor" matInput />
+      <span matSuffix>RGB</span>
+    </mat-form-field>
+  </div>
+
+  <div class="flex">
+    <mat-form-field [style.width.%]="47" appearance="fill">
+      <mat-label>Border type</mat-label>
+      <mat-select formControlName="borderType">
+        <mat-option value="legacy">legacy</mat-option>
+        <mat-option value="standard">standard</mat-option>
+        <mat-option value="fill">fill</mat-option>
+        <mat-option value="outline">outline</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field [style.width.%]="47" appearance="fill">
+      <mat-label>Border color</mat-label>
+      <input formControlName="borderColor" matInput />
+      <span matSuffix>RGB</span>
+    </mat-form-field>
+  </div>
+
+  <div class="button">
+    <button mat-stroked-button (click)="submit()">Apply</button>
+  </div>
+</form>
