@@ -4,7 +4,9 @@
   [style.fontSize.px]="configs.fontSize"
 >
   <mat-label>{{ configs.label }}</mat-label>
-  <mat-select>
-    <mat-option *ngFor="let item of configs.items" value="item">{{item}}</mat-option>
+  <mat-select [(ngModel)]="value">
+    <mat-option *ngFor="let item of configs.items"  [value]="item">{{
+      item
+    }}</mat-option>
   </mat-select>
 </mat-form-field>

@@ -16,6 +16,10 @@ export abstract class ValueController implements ControlValueAccessor {
     this.onTouch(val);
   }
 
+  get value(): string {
+    return this.inputValue;
+  }
+
   writeValue(value: any) {
     this.value = value;
   }

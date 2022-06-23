@@ -1,5 +1,6 @@
-<form [formGroup]="form">
+<section>
   <app-input [configs]="generalStyle.label"></app-input>
+
   <div class="flex">
     <app-input [configs]="generalStyle.textColor"></app-input>
     <app-input [configs]="generalStyle.backgroundColor"></app-input>
@@ -7,6 +8,7 @@
 
   <div class="flex">
     <app-select [configs]="generalStyle.borderType"></app-select>
+
     <app-input [configs]="generalStyle.borderColor"></app-input>
   </div>
 
@@ -15,4 +17,4 @@
       Apply
     </button>
   </div>
-</form>
+</section>

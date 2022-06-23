@@ -3,6 +3,6 @@
   [style.width]="configs.width + configs.widthUnits"
   [style.fontSize.px]="configs.fontSize"
 >
-  <mat-label>{{configs.label}}</mat-label>
-  <textarea matInput></textarea>
+  <mat-label>{{ configs.label }}</mat-label>
+  <textarea [(ngModel)]="value" matInput></textarea>
 </mat-form-field>
