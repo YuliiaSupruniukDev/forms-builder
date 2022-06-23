@@ -1,9 +1,19 @@
 @import "../../../../styles/unary";
 
+.section {
+  padding: 14px 0px;
+}
+
 .field {
-  margin: 15px 0px;
+  padding: 15px 24px;
+  cursor: pointer;
 }
 
 .form-fields {
   min-height: 5px;
+}
+
+.field:hover, .cdk-drag-preview {
+  opacity: 1;
+  @include selected();
 }

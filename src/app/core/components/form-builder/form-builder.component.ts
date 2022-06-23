@@ -1,5 +1,7 @@
 import { CdkDragDrop } from '@angular/cdk/drag-drop';
-import { AfterViewInit, Component, ElementRef, OnChanges, ViewChild } from '@angular/core';
+import {
+  Component
+} from '@angular/core';
 import { DragAndDropService } from 'src/app/shared/services/drag-and-drop.service';
 
 @Component({
