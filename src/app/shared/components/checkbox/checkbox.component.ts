@@ -1,4 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { inputConfiguration } from 'src/app/core/constants/formConfigsInitial.constants';
 import { Checkbox } from 'src/app/core/interfaces/fields.interfaces';
 
 @Component({
@@ -6,12 +7,6 @@ import { Checkbox } from 'src/app/core/interfaces/fields.interfaces';
   templateUrl: './checkbox.component.html',
   styleUrls: ['./checkbox.component.scss']
 })
-export class CheckboxComponent implements OnInit {
-  @Input() configs: Checkbox
-
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
+export class CheckboxComponent {
+  @Input() configs: Checkbox = inputConfiguration
 }

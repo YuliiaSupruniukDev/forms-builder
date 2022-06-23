@@ -1,6 +1,13 @@
-<section class="example-section" >
-    <h4>Select your toppings:</h4>
-    <p><mat-checkbox formControlName="pepperoni">Pepperoni</mat-checkbox></p>
-    <p><mat-checkbox formControlName="extracheese">Extra Cheese</mat-checkbox></p>
-    <p><mat-checkbox formControlName="mushroom">Mushroom</mat-checkbox></p>
-  </section>
+<section>
+  <p class="text-center title">Select your toppings</p>
+  <p>
+    <mat-checkbox
+      [style.color]="configs.color"
+      [style.width]="configs.width + configs.widthUnits"
+      [style.height.px]="configs.height"
+      [style.fontWeight]="configs.fontWeight"
+      [style.fontSize.px]="configs.fontSize"
+      >Pepperoni</mat-checkbox
+    >
+  </p>
+</section>
