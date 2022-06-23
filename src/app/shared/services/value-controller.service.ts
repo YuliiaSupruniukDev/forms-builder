@@ -1,0 +1,30 @@
+import { Injectable } from '@angular/core';
+import { ControlValueAccessor } from '@angular/forms';
+
+@Injectable({
+  providedIn: 'root',
+})
+export abstract class ValueController implements ControlValueAccessor {
+  inputValue: string;
+
+  onChange: any = () => {};
+  onTouch: any = () => {};
+
+  set value(val: any) {
+    this.inputValue = val;
+    this.onChange(val);
+    this.onTouch(val);
+  }
+
+  writeValue(value: any) {
+    this.value = value;
+  }
+
+  registerOnChange(fn: any) {
+    this.onChange = fn;
+  }
+
+  registerOnTouched(fn: any) {
+    this.onTouch = fn;
+  }
+}

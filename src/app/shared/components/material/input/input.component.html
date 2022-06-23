@@ -4,6 +4,6 @@
   [style.fontSize.px]="configs.fontSize"
 >
   <mat-label>{{ configs.label }}</mat-label>
-  <input matInput [placeholder]="configs.placeholder" />
+  <input matInput [placeholder]="configs.placeholder" [(ngModel)]="value" />
   <span matSuffix>{{ configs.suffix }}</span>
 </mat-form-field>

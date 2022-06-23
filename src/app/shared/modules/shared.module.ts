@@ -8,6 +8,7 @@ import { PanelStatePipe } from '../pipes/panel-state.pipe';
 import { TextareaComponent } from '../components/material/textarea/textarea.component';
 import { InputComponent } from '../components/material/input/input.component';
 import { CheckboxComponent } from '../components/material/checkbox/checkbox.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,7 @@ import { CheckboxComponent } from '../components/material/checkbox/checkbox.comp
     ButtonComponent,
     PanelStatePipe,
   ],
-  imports: [CommonModule, MaterialUIModule],
+  imports: [CommonModule, MaterialUIModule, FormsModule],
   exports: [
     InputComponent,
     TextareaComponent,
