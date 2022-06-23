@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { inputConfiguration } from 'src/app/constants/formConfigsInitial.constants';
+import { CInputConfiguration } from 'src/app/constants/formConfigsInitial.constants';
 import { Textarea } from 'src/app/interfaces/fields.interfaces';
 
 @Component({
@@ -8,5 +8,5 @@ import { Textarea } from 'src/app/interfaces/fields.interfaces';
   styleUrls: ['./textarea.component.scss'],
 })
 export class TextareaComponent {
-  @Input() configs: Textarea = inputConfiguration;
+  @Input() configs: Textarea = CInputConfiguration;
 }

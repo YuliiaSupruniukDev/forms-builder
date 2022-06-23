@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { inputConfiguration } from 'src/app/constants/formConfigsInitial.constants';
+import { CInputConfiguration } from 'src/app/constants/formConfigsInitial.constants';
 import { SimpleInput } from 'src/app/interfaces/fields.interfaces';
 
 @Component({
@@ -8,5 +8,5 @@ import { SimpleInput } from 'src/app/interfaces/fields.interfaces';
   styleUrls: ['./input.component.scss'],
 })
 export class InputComponent {
-  @Input() configs: SimpleInput = inputConfiguration;
+  @Input() configs: SimpleInput = CInputConfiguration;
 }

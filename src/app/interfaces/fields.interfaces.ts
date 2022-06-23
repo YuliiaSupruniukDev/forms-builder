@@ -1,14 +1,14 @@
-import { Appearance, WidthUnit } from "../enums/style.enums";
+import { EAppearance, EWidthUnit } from "../enums/style.enums";
 
 export interface CustomInput {
   label: string;
   width: number;
   height: number;
-  widthUnits: WidthUnit;
+  widthUnits: EWidthUnit;
   fontWeight: number;
   fontSize: number;
   color: string;
-  appearance: Appearance;
+  appearance: EAppearance;
   isRequired: boolean;
 }
 

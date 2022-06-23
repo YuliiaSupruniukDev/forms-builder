@@ -1,11 +1,11 @@
-export enum Appearance {
+export enum EAppearance {
   Legacy = 'legacy',
   Standard = 'standard',
   Fill = 'fill',
   Outline = 'outline',
 }
 
-export enum WidthUnit {
+export enum EWidthUnit {
   Percent = '%',
   Pixels = 'px',
 }

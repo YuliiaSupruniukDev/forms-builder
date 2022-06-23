@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { inputConfiguration } from 'src/app/constants/formConfigsInitial.constants';
+import { CInputConfiguration } from 'src/app/constants/formConfigsInitial.constants';
 import { Select } from 'src/app/interfaces/fields.interfaces';
 
 @Component({
@@ -8,5 +8,5 @@ import { Select } from 'src/app/interfaces/fields.interfaces';
   styleUrls: ['./select.component.scss'],
 })
 export class SelectComponent {
-  @Input() configs: Select = inputConfiguration;
+  @Input() configs: Select = CInputConfiguration;
 }
