@@ -1,7 +1,5 @@
-import {
-  CdkDragDrop,
-} from '@angular/cdk/drag-drop';
-import { Component } from '@angular/core';
+import { CdkDragDrop } from '@angular/cdk/drag-drop';
+import { AfterViewInit, Component, ElementRef, OnChanges, ViewChild } from '@angular/core';
 import { DragAndDropService } from 'src/app/shared/services/drag-and-drop.service';
 
 @Component({
@@ -10,7 +8,7 @@ import { DragAndDropService } from 'src/app/shared/services/drag-and-drop.servic
   styleUrls: ['./form-builder.component.scss'],
 })
 export class FormBuilderComponent {
-  fields: string[] = ['input'];
+  fields: string[] = [];
 
   constructor(private dragAndDropService: DragAndDropService) {}
 

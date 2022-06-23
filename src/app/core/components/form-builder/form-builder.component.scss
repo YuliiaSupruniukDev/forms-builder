@@ -1,14 +1,9 @@
 @import "../../../../styles/unary";
 
-h3 {
-  margin: 0 auto;
-  text-align: center;
+.field {
+  margin: 15px 0px;
 }
 
-.field-item {
-  margin: 20px 0px;
-}
-
-.cdk-drag-preview {
-  @include fieldItemShadow();
+.form-fields {
+  min-height: 5px;
 }

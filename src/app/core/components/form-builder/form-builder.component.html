@@ -1,15 +1,18 @@
 <div class="section">
-  <h3>Form Label</h3>
-
-  <app-input></app-input>
+  <h3 class="center">Form Label</h3>
 
   <div
+  class="form-fields"
     cdkDropList
     [cdkDropListData]="fields"
     (cdkDropListDropped)="onDrop($event)"
   >
-    <div *ngFor="let field of fields" class="field-item" cdkDrag>
-      {{ field }}
+    <div class="field" *ngFor="let field of fields" [ngSwitch]="field" #formFieldsList cdkDrag>
+      <app-input *ngSwitchCase="'Input'"></app-input>
+      <app-textarea *ngSwitchCase="'Textarea'"></app-textarea>
+      <app-select *ngSwitchCase="'Select'"></app-select>
+      <app-button *ngSwitchCase="'Button'"></app-button>
+      <app-checkbox *ngSwitchCase="'Checkbox'"></app-checkbox>
     </div>
   </div>
 </div>
