@@ -1,54 +1,19 @@
 <form [formGroup]="form">
-  <mat-form-field [style.width.%]="100" appearance="fill">
-    <mat-label>Form Label</mat-label>
-    <input formControlName="label" matInput />
-  </mat-form-field>
+  <app-input [configs]="generalStyle.label"></app-input>
 
-  <div class="flex">
-    <mat-form-field [style.width.%]="47" appearance="fill">
-      <mat-label>Text Color</mat-label>
-      <input
-        formControlName="color"
-        matInput
-        placeholder="(255, 255, 255)"
-      />
-      <span matSuffix>RGB</span>
-    </mat-form-field>
-
-    <mat-form-field [style.width.%]="47" appearance="fill">
-      <mat-label>Background</mat-label>
-      <input
-        formControlName="backgroundColor"
-        placeholder="(255, 255, 255)"
-        matInput
-      />
-      <span matSuffix>RGB</span>
-    </mat-form-field>
+  <div class="g">
+    <app-input [configs]="generalStyle.textColor"></app-input>
+    <app-input [configs]="generalStyle.backgroundColor"></app-input>
   </div>
 
-  <div class="flex">
-    <mat-form-field [style.width.%]="47" appearance="fill">
-      <mat-label>Border type</mat-label>
-      <mat-select formControlName="borderType">
-        <mat-option value="legacy">legacy</mat-option>
-        <mat-option value="standard">standard</mat-option>
-        <mat-option value="fill">fill</mat-option>
-        <mat-option value="outline">outline</mat-option>
-      </mat-select>
-    </mat-form-field>
-
-    <mat-form-field [style.width.%]="47" appearance="fill">
-      <mat-label>Border color</mat-label>
-      <input
-        formControlName="borderColor"
-        placeholder="(255, 255, 255)"
-        matInput
-      />
-      <span matSuffix>RGB</span>
-    </mat-form-field>
+  <div class="g">
+    <app-select [configs]="generalStyle.borderType"></app-select>
+    <app-input [configs]="generalStyle.borderColor"></app-input>
   </div>
 
   <div class="button">
-    <button mat-stroked-button (click)="submit()" [disabled]="!form.valid">Apply</button>
+    <button mat-stroked-button (click)="submit()" [disabled]="!form.valid">
+      Apply
+    </button>
   </div>
 </form>

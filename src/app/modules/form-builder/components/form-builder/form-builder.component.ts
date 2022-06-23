@@ -2,6 +2,7 @@ import { CdkDragDrop } from '@angular/cdk/drag-drop';
 import {
   Component
 } from '@angular/core';
+import { EFields } from 'src/app/enums/fields.enum';
 import { DragAndDropService } from 'src/app/shared/services/drag-and-drop.service';
 
 @Component({
@@ -10,7 +11,8 @@ import { DragAndDropService } from 'src/app/shared/services/drag-and-drop.servic
   styleUrls: ['./form-builder.component.scss'],
 })
 export class FormBuilderComponent {
-  fields: string[] = [];
+  fieldsList: string[] = [];
+  FIELDS = EFields;
 
   constructor(private dragAndDropService: DragAndDropService) {}
 

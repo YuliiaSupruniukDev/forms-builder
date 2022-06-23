@@ -1,13 +1,13 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { InputComponent } from '../components/input/input.component';
 import { MaterialUIModule } from './material-ui.module';
-import { TextareaComponent } from '../components/textarea/textarea.component';
-import { SelectComponent } from '../components/select/select.component';
-import { CheckboxComponent } from '../components/checkbox/checkbox.component';
-import { ButtonComponent } from '../components/button/button.component';
+import { SelectComponent } from '../components/material/select/select.component';
+import { ButtonComponent } from '../components/material/button/button.component';
 import { PanelStatePipe } from '../pipes/panel-state.pipe';
+import { TextareaComponent } from '../components/material/textarea/textarea.component';
+import { InputComponent } from '../components/material/input/input.component';
+import { CheckboxComponent } from '../components/material/checkbox/checkbox.component';
 
 @NgModule({
   declarations: [

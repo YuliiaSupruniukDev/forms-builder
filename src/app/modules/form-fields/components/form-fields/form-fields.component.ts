@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { fieldsList } from 'src/app/constants/fieldsList.constant';
 
 @Component({

@@ -4,20 +4,20 @@
   <div
     class="form-fields"
     cdkDropList
-    [cdkDropListData]="fields"
+    [cdkDropListData]="fieldsList"
     (cdkDropListDropped)="onDrop($event)"
   >
     <div
       class="field"
-      *ngFor="let field of fields; let i = index"
+      *ngFor="let field of fieldsList; let i = index"
       [ngSwitch]="field"
       cdkDrag
     >
-      <app-input *ngSwitchCase="'Input'"></app-input>
-      <app-textarea *ngSwitchCase="'Textarea'"></app-textarea>
-      <app-select *ngSwitchCase="'Select'"></app-select>
-      <app-button *ngSwitchCase="'Button'"></app-button>
-      <app-checkbox *ngSwitchCase="'Checkbox'"></app-checkbox>
+      <app-input *ngSwitchCase="FIELDS.Input"></app-input>
+      <app-textarea *ngSwitchCase="FIELDS.Textarea"></app-textarea>
+      <app-select *ngSwitchCase="FIELDS.Select"></app-select>
+      <app-button *ngSwitchCase="FIELDS.Button"></app-button>
+      <app-checkbox *ngSwitchCase="FIELDS.Checkbox"></app-checkbox>
     </div>
   </div>
 </div>

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { CFormGeneralStyle } from '../../form-general-style.constant';
 
 @Component({
   selector: 'app-form-styles',
@@ -9,6 +10,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 export class FormStylesComponent implements OnInit {
   form: FormGroup;
   rgbPattern = /^\([0-9]{1,3},\s?[0-9]{1,3},\s?[0-9]{1,3}\)$/;
+  generalStyle = CFormGeneralStyle
 
   constructor() {}
 

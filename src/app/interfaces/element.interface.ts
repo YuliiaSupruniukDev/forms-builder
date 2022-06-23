@@ -1,4 +1,4 @@
-import { EFields } from '../enums/elements.enum';
+import { EFields } from '../enums/fields.enum';
 
 export interface Element {
   index: number;

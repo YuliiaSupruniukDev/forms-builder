@@ -1,14 +1,10 @@
 <mat-form-field
   [appearance]="configs.appearance"
-  [style.color]="configs.color"
   [style.width]="configs.width + configs.widthUnits"
-  [style.height.px]="configs.height"
-  [style.fontWeight]="configs.fontWeight"
   [style.fontSize.px]="configs.fontSize"
 >
   <mat-label>{{ configs.label }}</mat-label>
   <mat-select>
-    <mat-option value="one">First option</mat-option>
-    <mat-option value="two">Second option</mat-option>
+    <mat-option *ngFor="let item of configs.items" value="item">{{item}}</mat-option>
   </mat-select>
 </mat-form-field>
