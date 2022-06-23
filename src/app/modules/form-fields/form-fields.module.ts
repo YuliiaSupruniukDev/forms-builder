@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { SharedModule } from 'src/app/shared/modules/shared.module';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { FormFieldsComponent } from './components/form-fields/form-fields.component';
+import { SharedMatModule } from 'src/app/shared/modules/sharedMat.module';
 
 
 
@@ -10,7 +10,7 @@ import { FormFieldsComponent } from './components/form-fields/form-fields.compon
   declarations: [FormFieldsComponent],
   imports: [
     CommonModule,
-    SharedModule,
+    SharedMatModule,
     DragDropModule
   ],
   exports: [FormFieldsComponent]

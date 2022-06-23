@@ -9,24 +9,27 @@ import { TextareaComponent } from '../components/material/textarea/textarea.comp
 import { InputComponent } from '../components/material/input/input.component';
 import { CheckboxComponent } from '../components/material/checkbox/checkbox.component';
 import { FormsModule } from '@angular/forms';
+import { CustomInputComponent } from '../components/custom/custom-input/custom-input.component';
+import { CustomTextareaComponent } from '../components/custom/custom-textarea/custom-textarea.component';
+import { CustomSelectComponent } from '../components/custom/custom-select/custom-select.component';
+import { CustomCheckboxComponent } from '../components/custom/custom-checkbox/custom-checkbox.component';
+import { CustomButtonComponent } from '../components/custom/custom-button/custom-button.component';
 
 @NgModule({
   declarations: [
-    InputComponent,
-    TextareaComponent,
-    CheckboxComponent,
-    SelectComponent,
-    ButtonComponent,
-    PanelStatePipe,
+    CustomInputComponent,
+    CustomTextareaComponent,
+    CustomSelectComponent,
+    CustomCheckboxComponent,
+    CustomButtonComponent,
   ],
-  imports: [CommonModule, MaterialUIModule, FormsModule],
+  imports: [CommonModule, FormsModule],
   exports: [
-    InputComponent,
-    TextareaComponent,
-    CheckboxComponent,
-    SelectComponent,
-    ButtonComponent,
-    PanelStatePipe,
+    CustomInputComponent,
+    CustomTextareaComponent,
+    CustomSelectComponent,
+    CustomCheckboxComponent,
+    CustomButtonComponent,
   ],
 })
 export class SharedModule {}
