@@ -11,9 +11,7 @@ export class FormStylesComponent implements OnInit {
   form: FormGroup;
   rgbPattern = /^\([0-9]{1,3},\s?[0-9]{1,3},\s?[0-9]{1,3}\)$/;
   generalStyle = CFormGeneralStyle
-
-  constructor() {}
-
+  
   ngOnInit(): void {
     this.form = new FormGroup({
       label: new FormControl('', [
