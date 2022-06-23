@@ -1,5 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import {
+  FormGroup,
+  Validators,
+  FormBuilder,
+} from '@angular/forms';
+import { CrgbPattern } from 'src/app/constants/patterns.constant';
 import { CFormGeneralStyle } from '../../form-general-style.constant';
 
 @Component({
@@ -9,25 +14,31 @@ import { CFormGeneralStyle } from '../../form-general-style.constant';
 })
 export class FormStylesComponent implements OnInit {
   form: FormGroup;
-  rgbPattern = /^\([0-9]{1,3},\s?[0-9]{1,3},\s?[0-9]{1,3}\)$/;
-  generalStyle = CFormGeneralStyle
-  
+  rgbPattern = CrgbPattern;
+  generalStyle = CFormGeneralStyle;
+
+  constructor(private formBuilder: FormBuilder) {}
+
   ngOnInit(): void {
-    this.form = new FormGroup({
-      label: new FormControl('', [
+    this.initForm();
+  }
+
+  initForm(): void {
+    this.form = this.formBuilder.group({
+      label: this.formBuilder.control('', [
         Validators.required,
         Validators.minLength(1),
       ]),
-      color: new FormControl('', [
+      color: this.formBuilder.control('', [
         Validators.required,
         Validators.pattern(this.rgbPattern),
       ]),
-      backgroundColor: new FormControl('', [
+      backgroundColor: this.formBuilder.control('', [
         Validators.required,
         Validators.pattern(this.rgbPattern),
       ]),
-      borderType: new FormControl('', [Validators.required]),
-      borderColor: new FormControl('', [
+      borderType: this.formBuilder.control('', [Validators.required]),
+      borderColor: this.formBuilder.control('', [
         Validators.required,
         Validators.pattern(this.rgbPattern),
       ]),

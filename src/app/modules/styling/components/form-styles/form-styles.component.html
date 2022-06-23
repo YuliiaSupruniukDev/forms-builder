@@ -1,15 +1,27 @@
-<section>
-  <app-input [configs]="generalStyle.label"></app-input>
+<form [formGroup]="form">
+  <app-input [configs]="generalStyle.label" formControlName="label"></app-input>
 
   <div class="flex">
-    <app-input [configs]="generalStyle.textColor"></app-input>
-    <app-input [configs]="generalStyle.backgroundColor"></app-input>
+    <app-input
+      [configs]="generalStyle.textColor"
+      formControlName="color"
+    ></app-input>
+    <app-input
+      [configs]="generalStyle.backgroundColor"
+      formControlName="backgroundColor"
+    ></app-input>
   </div>
 
   <div class="flex">
-    <app-select [configs]="generalStyle.borderType"></app-select>
+    <app-select
+      [configs]="generalStyle.borderType"
+      formControlName="borderType"
+    ></app-select>
 
-    <app-input [configs]="generalStyle.borderColor"></app-input>
+    <app-input
+      [configs]="generalStyle.borderColor"
+      formControlName="borderColor"
+    ></app-input>
   </div>
 
   <div class="button">
@@ -17,4 +29,4 @@
       Apply
     </button>
   </div>
-</section>
+</form>
