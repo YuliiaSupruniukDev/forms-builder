@@ -2,6 +2,11 @@ import { CBorderStyles } from 'src/app/constants/borderStyles.constant';
 import { CInputConfiguration } from 'src/app/constants/formConfigsInitial.constants';
 import { EWidthUnit } from 'src/app/enums/style.enums';
 
+export const colorInput = {
+  placeholder: '(255, 255, 255)',
+  suffix: 'RGB',
+};
+
 export const CFormGeneralStyle = {
   label: {
     ...CInputConfiguration,
@@ -12,14 +17,12 @@ export const CFormGeneralStyle = {
   textColor: {
     ...CInputConfiguration,
     label: 'Text Color',
-    placeholder: '(255, 255, 255)',
-    suffix: 'RGB',
+    ...colorInput,
   },
   backgroundColor: {
     ...CInputConfiguration,
     label: 'Background',
-    placeholder: '(255, 255, 255)',
-    suffix: 'RGB',
+    ...colorInput,
   },
   borderType: {
     ...CInputConfiguration,
@@ -29,8 +32,7 @@ export const CFormGeneralStyle = {
   borderColor: {
     ...CInputConfiguration,
     label: 'Border color',
-    placeholder: '(255, 255, 255)',
-    suffix: 'RGB',
+    ...colorInput,
   },
   width: {
     ...CInputConfiguration,
@@ -53,8 +55,8 @@ export const CFormGeneralStyle = {
   },
   color: {
     ...CInputConfiguration,
-    label: 'Font weight',
-    suffix: 'px',
+    label: 'Colour input',
+    ...colorInput,
   },
   inputSelect: {
     ...CInputConfiguration,

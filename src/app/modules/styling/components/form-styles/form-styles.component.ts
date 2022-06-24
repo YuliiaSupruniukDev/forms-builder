@@ -45,7 +45,7 @@ export class FormStylesComponent implements OnInit {
     });
   }
 
-  submit() {
+  submit(): void{
     console.log(this.form.value);
   }
 }

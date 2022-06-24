@@ -47,6 +47,7 @@ export class FieldStylesComponent implements OnInit {
         Validators.pattern(this.rgbPattern),
       ]),
       borderType: this.formBuilder.control('', [Validators.required]),
+      isRequired: this.formBuilder.control(false),
       items: this.formBuilder.control([], [Validators.required]),
     });
   }
@@ -69,7 +70,7 @@ export class FieldStylesComponent implements OnInit {
     this.form.get('items')?.setValue(options);
   }
 
-  submit() {
+  submit(): void{
     console.log(this.form.value);
   }
 

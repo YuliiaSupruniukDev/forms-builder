@@ -35,10 +35,14 @@
 
 .custom-checkbox input {
   margin-right: 10px;
-  vertical-align: middle;
 
   width: 17px;
   height: 17px;
 
   cursor: pointer;
+}
+
+.custom-checkbox label {
+  display: flex;
+  align-items: center;
 }

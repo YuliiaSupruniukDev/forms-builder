@@ -1,11 +1,11 @@
 @import "../../../../../styles/unary";
 
 .section {
-  padding: 14px 24px;
+  padding: 14px 0px;
 }
 
 .field {
-  padding: 15px 0;
+  padding: 14px 24px;
   cursor: pointer;
   position: relative;
 }
@@ -20,6 +20,7 @@
   position: absolute;
 
   top: 0;
+  left: 0px;
   height: 100%;
   width: 100%;
 

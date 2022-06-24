@@ -2,6 +2,7 @@
   <form [formGroup]="form">
     <h3 *ngIf="pickedField">
       {{ pickedField.type + " " + pickedField.index }}
+      <!-- temp -->
     </h3>
     <app-input
       [configs]="generalStyle.label"
@@ -40,6 +41,10 @@
         [configs]="generalStyle.borderType"
         formControlName="borderType"
       ></app-select>
+    </div>
+
+    <div class="custom-checkbox">
+      <label><input type="checkbox" />Required field</label>
     </div>
 
     <div class="flex flex-btn">
