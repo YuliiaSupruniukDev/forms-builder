@@ -7,13 +7,27 @@
 .field {
   padding: 15px 0;
   cursor: pointer;
+  position: relative;
 }
 
 .form-fields {
   min-height: 5px;
 }
 
-.field:hover, .cdk-drag-preview {
-  opacity: 1;
+.active::after {
+  content: "";
+  display: block;
+  position: absolute;
+
+  top: 0;
+  height: 100%;
+  width: 100%;
+
+  z-index: -1;
+  @include selected();
+}
+
+.field:hover,
+.cdk-drag-preview {
   @include selected();
 }

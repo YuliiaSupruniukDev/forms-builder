@@ -1,16 +1,16 @@
 <div class="section">
-  <h3 class="center">Form Label</h3>
+  <h3 class="center title">Form Label</h3>
   <div
     class="form-fields"
     cdkDropList
     [cdkDropListData]="fieldsList"
     (cdkDropListDropped)="onDrop($event)"
+    #items
   >
     <div
       class="field"
       *ngFor="let field of formObj; let i = index"
       [ngSwitch]="field.type"
-      cdkDrag
       (click)="pickField(field)"
     >
       <app-custom-input *ngSwitchCase="FIELDS.Input"></app-custom-input>
@@ -18,7 +18,10 @@
         *ngSwitchCase="FIELDS.Textarea"
       ></app-custom-textarea>
       <app-custom-select *ngSwitchCase="FIELDS.Select"></app-custom-select>
-      <app-custom-button *ngSwitchCase="FIELDS.Button"></app-custom-button>
+      <app-custom-button
+        [width]="'50%'"
+        *ngSwitchCase="FIELDS.Button"
+      ></app-custom-button>
       <app-custom-checkbox
         *ngSwitchCase="FIELDS.Checkbox"
       ></app-custom-checkbox>
