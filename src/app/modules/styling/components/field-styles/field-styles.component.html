@@ -1,30 +1,25 @@
 <form>
-    <app-input [configs]="generalStyle.label"></app-input>
-  
-    <div class="flex">
-      <app-input
-        [configs]="generalStyle.textColor"
-      ></app-input>
-      <app-input
-        [configs]="generalStyle.backgroundColor"
-      ></app-input>
-    </div>
-  
-    <div class="flex">
-      <app-select
-        [configs]="generalStyle.borderType"
-        
-      ></app-select>
-  
-      <app-input
-        [configs]="generalStyle.borderColor"
-      ></app-input>
-    </div>
-  
-    <div class="button">
-      <button mat-stroked-button >
-        Apply
-      </button>
-    </div>
-  </form>
-  
+  <h3 *ngIf="pickedField">{{ pickedField.type }}</h3>
+  <app-input [configs]="generalStyle.label"></app-input>
+
+  <div class="flex">
+    <app-input [configs]="generalStyle.width"></app-input>
+    <app-input [configs]="generalStyle.height"></app-input>
+  </div>
+
+  <div class="flex">
+    <app-input [configs]="generalStyle.fontSize"></app-input>
+
+    <app-select [configs]="generalStyle.fontWeight"></app-select>
+  </div>
+
+  <div class="flex">
+    <app-input [configs]="generalStyle.color"></app-input>
+
+    <app-select [configs]="generalStyle.borderType"></app-select>
+  </div>
+
+  <div class="button">
+    <button mat-stroked-button>Apply</button>
+  </div>
+</form>

@@ -50,7 +50,7 @@ export const CFormGeneralStyle = {
   fontWeight: {
     ...CInputConfiguration,
     label: 'Font weight',
-    items: [100, 200, 300, 400],
+    items: ['100', '200', '300', '400'],
   },
   color: {
     ...CInputConfiguration,

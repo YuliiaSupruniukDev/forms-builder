@@ -5,7 +5,7 @@ import { ControlValueAccessor } from '@angular/forms';
   providedIn: 'root',
 })
 export abstract class ValueController implements ControlValueAccessor {
-  inputValue: string;
+  private inputValue: string;
 
   onChange: any = () => {};
   onTouch: any = () => {};

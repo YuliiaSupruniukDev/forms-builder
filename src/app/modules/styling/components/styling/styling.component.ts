@@ -1,17 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-styling',
   templateUrl: './styling.component.html',
   styleUrls: ['./styling.component.scss'],
 })
-export class StylingComponent implements OnInit {
+export class StylingComponent {
   formStylePanelState = false;
   fieldStylePanelState = false;
-
-  constructor() {}
-
-  ngOnInit(): void {}
 
   togglePanel(option: 'form' | 'field') {
     switch (option) {
