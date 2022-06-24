@@ -7,6 +7,10 @@
   [style.color]="configs.color"
   [style.borderStyle]="configs.borderStyle"
   [required]="configs.isRequired"
+  clickAfterChange
+  [(ngModel)]="value"
 >
-  <option selected disabled value="">{{configs.placeholder}}</option>
+  <option selected disabled value="configs.placeholder">
+    {{ configs.placeholder }}
+  </option>
 </select>

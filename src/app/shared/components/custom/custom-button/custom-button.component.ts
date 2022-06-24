@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { CCustomButtonConfiguration } from 'src/app/constants/formConfigsInitial.constants';
 import { ICustomButton } from 'src/app/interfaces/fields.interfaces';
 
@@ -9,4 +9,7 @@ import { ICustomButton } from 'src/app/interfaces/fields.interfaces';
 })
 export class CustomButtonComponent {
   @Input() configs: ICustomButton = CCustomButtonConfiguration;
+  @Input() buttonText?: string;
+  @Input() width?: string;
+  @Input() disabled?: boolean = false;
 }

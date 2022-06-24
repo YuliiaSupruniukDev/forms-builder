@@ -1,11 +1,12 @@
 <button
   class="custom-input custom-btn"
-  [style.width]="configs.width"
-  [style.height]="configs.width"
+  [style.width]="width || configs.width"
+  [style.height]="configs.height"
   [style.fontSize.px]="configs.fontSize"
   [style.fontWeight]="configs.fontWeight"
   [style.color]="configs.color"
   [style.borderStyle]="configs.borderStyle"
+  [disabled]="disabled"
 >
-  {{ configs.label }}
+  {{ buttonText || configs.label }}
 </button>
