@@ -24,6 +24,15 @@
   cursor: pointer;
 }
 
+.custom-btn:active {
+  background-color: $btnBackgroundFocus;
+}
+
+.custom-btn[disabled="disabled"],
+.custom-btn:disabled {
+  opacity: 0.5;
+}
+
 .custom-checkbox input {
   margin-right: 10px;
   vertical-align: middle;

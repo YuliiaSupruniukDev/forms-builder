@@ -7,6 +7,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FieldStylesComponent } from './components/field-styles/field-styles.component';
 import { SharedMatModule } from 'src/app/shared/modules/sharedMat.module';
 import { PanelStatePipe } from 'src/app/shared/pipes/panel-state.pipe';
+import { SharedModule } from 'src/app/shared/modules/shared.module';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { PanelStatePipe } from 'src/app/shared/pipes/panel-state.pipe';
     FormsModule,
     ReactiveFormsModule,
     MaterialUIModule,
-    SharedMatModule
+    SharedMatModule,
+    SharedModule,
   ],
   exports: [StylingComponent],
 })

@@ -15,24 +15,23 @@ export const CCustomInputConfiguration = {
 export const CCustomTextareaConfiguration = {
   ...CCustomInputConfiguration,
   placeholder: 'Textarea label',
-}
+};
 
 export const CCustomButtonConfiguration = {
   ...CCustomInputConfiguration,
   label: 'Button label',
   placeholder: '',
-  width: '50%'
-}
+  width: '100%',
+};
 
 export const CCustomSelectConfiguration = {
   ...CCustomInputConfiguration,
   placeholder: 'Select label',
-}
-
+};
 
 export const CCustomCheckboxConfiguration = {
-  label: 'Checkbox label'
-}
+  label: 'Checkbox label',
+};
 
 export const CInputConfiguration = {
   label: 'Form Label',

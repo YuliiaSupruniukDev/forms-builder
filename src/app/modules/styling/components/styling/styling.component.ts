@@ -9,7 +9,7 @@ export class StylingComponent {
   formStylePanelState = false;
   fieldStylePanelState = false;
 
-  togglePanel(option: 'form' | 'field') {
+  togglePanel(option: 'form' | 'field'): void {
     switch (option) {
       case 'form':
         this.formStylePanelState = !this.formStylePanelState;

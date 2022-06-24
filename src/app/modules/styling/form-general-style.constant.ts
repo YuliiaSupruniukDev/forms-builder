@@ -35,7 +35,6 @@ export const CFormGeneralStyle = {
   width: {
     ...CInputConfiguration,
     label: 'Width',
-    suffix: 'px',
   },
   height: {
     ...CInputConfiguration,
@@ -56,5 +55,11 @@ export const CFormGeneralStyle = {
     ...CInputConfiguration,
     label: 'Font weight',
     suffix: 'px',
+  },
+  inputSelect: {
+    ...CInputConfiguration,
+    label: 'Add field',
+    width: 100,
+    widthUnits: EWidthUnit.Percent,
   },
 };

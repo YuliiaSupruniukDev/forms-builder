@@ -7,6 +7,7 @@ import { CustomSelectComponent } from '../components/custom/custom-select/custom
 import { CustomCheckboxComponent } from '../components/custom/custom-checkbox/custom-checkbox.component';
 import { CustomButtonComponent } from '../components/custom/custom-button/custom-button.component';
 import { FormsModule } from '@angular/forms';
+import { ClickAfterChangeDirective } from '../directives/click-after-change.directive';
 
 @NgModule({
   declarations: [
@@ -15,6 +16,7 @@ import { FormsModule } from '@angular/forms';
     CustomSelectComponent,
     CustomCheckboxComponent,
     CustomButtonComponent,
+    ClickAfterChangeDirective,
   ],
   imports: [CommonModule, FormsModule],
   exports: [
