@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { CInputConfiguration } from 'src/app/constants/formConfigsInitial.constants';
-import { Checkbox } from 'src/app/interfaces/fields.interfaces';
+import { ICheckbox } from 'src/app/interfaces/fields.interfaces';
 
 @Component({
   selector: 'app-checkbox',
@@ -8,5 +8,5 @@ import { Checkbox } from 'src/app/interfaces/fields.interfaces';
   styleUrls: ['./checkbox.component.scss']
 })
 export class CheckboxComponent {
-  @Input() configs: Checkbox = CInputConfiguration
+  @Input() configs: ICheckbox = CInputConfiguration
 }

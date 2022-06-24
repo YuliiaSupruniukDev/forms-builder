@@ -1,6 +1,6 @@
 import { Component, forwardRef, Input, OnInit } from '@angular/core';
 import { CInputConfiguration } from 'src/app/constants/formConfigsInitial.constants';
-import { SimpleInput } from 'src/app/interfaces/fields.interfaces';
+import { IInput } from 'src/app/interfaces/fields.interfaces';
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
 import { ValueController } from 'src/app/shared/services/value-controller.service';
 
@@ -17,5 +17,5 @@ import { ValueController } from 'src/app/shared/services/value-controller.servic
   ],
 })
 export class InputComponent extends ValueController {
-  @Input() configs: SimpleInput = CInputConfiguration;
+  @Input() configs: IInput = CInputConfiguration;
 }

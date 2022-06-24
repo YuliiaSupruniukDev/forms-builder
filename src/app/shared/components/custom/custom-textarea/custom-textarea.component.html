@@ -1,1 +1,12 @@
-<p>custom-textarea works!</p>
+<label>{{ configs.label }}</label>
+<textarea
+  class="textarea custom-input"
+  [placeholder]="configs.placeholder"
+  [style.width]="configs.width"
+  [style.height]="configs.width"
+  [style.fontSize.px]="configs.fontSize"
+  [style.fontWeight]="configs.fontWeight"
+  [style.color]="configs.color"
+  [style.borderStyle]="configs.borderStyle"
+  [required]="configs.isRequired"
+></textarea>

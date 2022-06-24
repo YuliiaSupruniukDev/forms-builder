@@ -1,1 +1,11 @@
-<p>custom-button works!</p>
+<button
+  class="custom-input custom-btn"
+  [style.width]="configs.width"
+  [style.height]="configs.width"
+  [style.fontSize.px]="configs.fontSize"
+  [style.fontWeight]="configs.fontWeight"
+  [style.color]="configs.color"
+  [style.borderStyle]="configs.borderStyle"
+>
+  {{ configs.label }}
+</button>

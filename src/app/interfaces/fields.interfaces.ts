@@ -1,18 +1,6 @@
-import { EAppearance, EWidthUnit } from "../enums/style.enums";
+import { EAppearance, EBorderStyle, EWidthUnit } from '../enums/style.enums';
 
-export interface CustomInput {
-  label: string;
-  width: number;
-  height: number;
-  widthUnits: EWidthUnit;
-  fontWeight: number;
-  fontSize: number;
-  color: string;
-  appearance: EAppearance;
-  isRequired: boolean;
-}
-
-export interface IInput {
+export interface IMatField {
   label: string;
   width: number;
   widthUnits: EWidthUnit;
@@ -20,19 +8,48 @@ export interface IInput {
   appearance: EAppearance;
 }
 
-export interface SimpleInput extends IInput {
+export interface IInput extends IMatField {
   placeholder: string;
   suffix: string;
 }
 
-export interface Textarea extends IInput {}
+export interface ITextarea extends IMatField {}
 
-export interface Select extends IInput {
+export interface ISelect extends IMatField {
   items?: string[];
 }
 
-export interface Button extends IInput {}
+export interface IButton extends IMatField {}
 
-export interface Checkbox extends IInput {
+export interface ICheckbox extends IMatField {
+  items?: string[];
+}
+
+export interface ICustomField {
+  label: string;
+  placeholder: string;
+  width: string;
+  height: string;
+  fontSize: string;
+  fontWeight: number;
+  color: string;
+  borderStyle: EBorderStyle;
+  isRequired: boolean;
+}
+
+export interface ICustomInput extends ICustomField {
+  placeholder: string;
+}
+
+export interface ICustomTextarea extends ICustomField {}
+
+export interface ICustomSelect extends ICustomField {
+  items?: string[];
+}
+
+export interface ICustomButton extends ICustomField {}
+
+export interface ICustomCheckbox {
+  label: string;
   items?: string[];
 }

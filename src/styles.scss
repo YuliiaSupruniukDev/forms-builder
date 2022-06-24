@@ -2,6 +2,7 @@
 @import "./styles/blocks.scss";
 @import "./styles/unary.scss";
 @import "./styles/theme";
+@import "./styles/custom-fields";
 
 * {
   padding: 0;
@@ -28,8 +29,11 @@ html {
   align-items: center;
 }
 
-
 .center {
   text-align: center;
   margin: 0 auto;
+}
+
+.title {
+  font-size: 18px;
 }

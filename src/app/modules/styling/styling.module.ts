@@ -20,7 +20,7 @@ import { PanelStatePipe } from 'src/app/shared/pipes/panel-state.pipe';
     FormsModule,
     ReactiveFormsModule,
     MaterialUIModule,
-    SharedMatModule,
+    SharedMatModule
   ],
   exports: [StylingComponent],
 })

@@ -1,7 +1,7 @@
 import { Component, forwardRef, Input } from '@angular/core';
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
 import { CInputConfiguration } from 'src/app/constants/formConfigsInitial.constants';
-import { Textarea } from 'src/app/interfaces/fields.interfaces';
+import { ITextarea } from 'src/app/interfaces/fields.interfaces';
 import { ValueController } from 'src/app/shared/services/value-controller.service';
 
 @Component({
@@ -17,5 +17,5 @@ import { ValueController } from 'src/app/shared/services/value-controller.servic
   ],
 })
 export class TextareaComponent extends ValueController {
-  @Input() configs: Textarea = CInputConfiguration;
+  @Input() configs: ITextarea = CInputConfiguration;
 }

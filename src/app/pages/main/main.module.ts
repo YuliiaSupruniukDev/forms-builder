@@ -9,6 +9,7 @@ import { HeaderModule } from 'src/app/modules/header/header.module';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { MainRoutingModule } from './main-routing.module';
 import { SharedMatModule } from 'src/app/shared/modules/sharedMat.module';
+import { SharedModule } from 'src/app/shared/modules/shared.module';
 
 @NgModule({
   declarations: [MainComponent],
@@ -22,6 +23,7 @@ import { SharedMatModule } from 'src/app/shared/modules/sharedMat.module';
     FormFieldsModule,
     HeaderModule,
     DragDropModule,
+    SharedModule
   ],
   exports: [MainComponent],
 })

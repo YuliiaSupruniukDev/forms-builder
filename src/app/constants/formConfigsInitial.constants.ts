@@ -1,18 +1,38 @@
-import { EAppearance, EWidthUnit } from '../enums/style.enums';
+import { EAppearance, EBorderStyle, EWidthUnit } from '../enums/style.enums';
 
-export const CInputConfigurationn = {
-  label: 'Form Label',
-  placeholder: '',
-  width: 100,
-  widthUnits: EWidthUnit.Percent,
-  height: 50,
+export const CCustomInputConfiguration = {
+  label: '',
+  placeholder: 'Input label',
+  width: '-webkit-fill-available',
+  height: 'auto',
+  fontSize: '14px',
   fontWeight: 400,
-  fontSize: 14,
-  color: 'rgb(0,0,0)',
-  appearance: EAppearance.Fill,
+  color: 'black',
+  borderStyle: EBorderStyle.Solid,
   isRequired: true,
-  suffix: '',
 };
+
+export const CCustomTextareaConfiguration = {
+  ...CCustomInputConfiguration,
+  placeholder: 'Textarea label',
+}
+
+export const CCustomButtonConfiguration = {
+  ...CCustomInputConfiguration,
+  label: 'Button label',
+  placeholder: '',
+  width: '50%'
+}
+
+export const CCustomSelectConfiguration = {
+  ...CCustomInputConfiguration,
+  placeholder: 'Select label',
+}
+
+
+export const CCustomCheckboxConfiguration = {
+  label: 'Checkbox label'
+}
 
 export const CInputConfiguration = {
   label: 'Form Label',

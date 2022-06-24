@@ -1,0 +1,35 @@
+.custom-input {
+  display: inline-block;
+  padding: 16px;
+  width: -webkit-fill-available;
+  border-width: 1px;
+  border-color: $lightGray;
+  border-radius: 4px;
+  background-color: white;
+}
+
+.custom-input:focus {
+  outline-color: $lightGray;
+  outline-width: 1.5px;
+}
+
+.custom-btn {
+  border-radius: 4px;
+  background-color: $btnBackground;
+  padding: 8px 16px;
+
+  display: block;
+  margin: 0 auto;
+
+  cursor: pointer;
+}
+
+.custom-checkbox input {
+  margin-right: 10px;
+  vertical-align: middle;
+
+  width: 17px;
+  height: 17px;
+
+  cursor: pointer;
+}
