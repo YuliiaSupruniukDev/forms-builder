@@ -7,7 +7,9 @@
   >
     <mat-expansion-panel-header>
       <mat-panel-title> Form General Styles </mat-panel-title>
-      <mat-panel-description>{{ formStylePanelState | panelState }}</mat-panel-description>
+      <mat-panel-description>{{
+        formStylePanelState | panelState
+      }}</mat-panel-description>
     </mat-expansion-panel-header>
     <app-form-styles></app-form-styles>
   </mat-expansion-panel>
@@ -20,9 +22,10 @@
   >
     <mat-expansion-panel-header>
       <mat-panel-title> Field Styles </mat-panel-title>
-      <mat-panel-description>{{ fieldStylePanelState | panelState }}</mat-panel-description>
+      <mat-panel-description>{{
+        fieldStylePanelState | panelState
+      }}</mat-panel-description>
     </mat-expansion-panel-header>
-
-    <p>This is the primary content of the panel.</p>
+    <app-field-styles></app-field-styles>
   </mat-expansion-panel>
 </mat-accordion>

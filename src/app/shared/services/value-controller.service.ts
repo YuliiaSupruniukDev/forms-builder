@@ -20,15 +20,15 @@ export abstract class ValueController implements ControlValueAccessor {
     return this.inputValue;
   }
 
-  writeValue(value: any) {
+  writeValue(value: any): void {
     this.value = value;
   }
 
-  registerOnChange(fn: any) {
+  registerOnChange(fn: any): void {
     this.onChange = fn;
   }
 
-  registerOnTouched(fn: any) {
+  registerOnTouched(fn: any): void {
     this.onTouch = fn;
   }
 }

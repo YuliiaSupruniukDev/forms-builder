@@ -8,8 +8,10 @@
   >
     <div
       class="field"
-      *ngFor="let field of fieldsList; let i = index"
-      [ngSwitch]="field"
+      *ngFor="let field of formObj; let i = index"
+      [ngSwitch]="field.type"
+      cdkDrag
+      (click)="pickField(field)"
     >
       <app-custom-input *ngSwitchCase="FIELDS.Input"></app-custom-input>
       <app-custom-textarea

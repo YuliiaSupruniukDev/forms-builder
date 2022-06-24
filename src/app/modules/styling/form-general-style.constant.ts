@@ -32,4 +32,29 @@ export const CFormGeneralStyle = {
     placeholder: '(255, 255, 255)',
     suffix: 'RGB',
   },
+  width: {
+    ...CInputConfiguration,
+    label: 'Width',
+    suffix: 'px',
+  },
+  height: {
+    ...CInputConfiguration,
+    label: 'Heigth',
+    suffix: 'px',
+  },
+  fontSize: {
+    ...CInputConfiguration,
+    label: 'Font size',
+    suffix: 'px',
+  },
+  fontWeight: {
+    ...CInputConfiguration,
+    label: 'Font weight',
+    items: [100, 200, 300, 400],
+  },
+  color: {
+    ...CInputConfiguration,
+    label: 'Font weight',
+    suffix: 'px',
+  },
 };
