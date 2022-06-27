@@ -23,7 +23,6 @@ export class FormStylesComponent implements OnInit {
 
   ngOnInit(): void {
     this.formStyle$.subscribe((data) => {
-      console.log(data);
       this.initForm(data);
     });
   }

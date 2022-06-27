@@ -8,7 +8,10 @@ import {
 } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { EFields } from 'src/app/enums/fields.enum';
-import { IElement } from 'src/app/interfaces/element.interface';
+import {
+  IElement,
+  IElementItemKey,
+} from 'src/app/interfaces/element.interface';
 import { DragAndDropService } from 'src/app/shared/services/drag-and-drop.service';
 import { FieldTransferService } from 'src/app/shared/services/field-transfer.service';
 import { setFields } from 'src/app/state/actions/field.actions';
@@ -21,12 +24,13 @@ import { selectFieldsStyle } from 'src/app/state/selectors/fields.selectors';
 })
 export class FormBuilderComponent implements OnInit {
   $fieldStyles = this.store.select(selectFieldsStyle);
-
   currentElement: any;
   FIELDS = EFields;
-  formObj: IElement[] = []; //temp, will be object for store with style, index and typeof input
 
+  fieldsKeyList: IElementItemKey[] = [];
   fieldsList: string[] = [];
+
+  fieldsInfoArr: IElement[] = []; //temp, will be object for store with style, index and typeof input
 
   @ViewChild('items') items: ElementRef<any>;
 
@@ -42,23 +46,28 @@ export class FormBuilderComponent implements OnInit {
       console.log('field -------', v);
     });
   }
+
   onDrop(event: CdkDragDrop<string[]>): void {
-    this.dragAndDropService.drop(event);
-    this.formObj = [];
+    this.fieldsKeyList = this.dragAndDropService.drop(
+      event,
+      this.fieldsKeyList
+    );
+    this.fieldsInfoArr = [];
 
     this.initFormFields();
   }
 
   initFormFields(): void {
-    for (let i = 0; i < this.fieldsList.length; i++) {
+    for (let i = 0; i < this.fieldsKeyList.length; i++) {
       let field: IElement = {
+        ...this.fieldsKeyList[i],
         index: i,
-        type: EFields[this.fieldsList[i] as keyof typeof EFields],
+        style: undefined,
       };
-      this.formObj.push(field);
+      this.fieldsInfoArr.push(field);
     }
 
-    this.store.dispatch(setFields({ fields: [...this.formObj] }));
+    this.store.dispatch(setFields({ fields: [...this.fieldsInfoArr] }));
   }
 
   pickField(field: IElement): void {

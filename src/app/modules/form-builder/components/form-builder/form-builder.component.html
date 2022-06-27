@@ -9,7 +9,7 @@
   >
     <div
       class="field"
-      *ngFor="let field of formObj; let i = index"
+      *ngFor="let field of fieldsInfoArr; let i = index"
       [ngSwitch]="field.type"
       (click)="pickField(field)"
     >
