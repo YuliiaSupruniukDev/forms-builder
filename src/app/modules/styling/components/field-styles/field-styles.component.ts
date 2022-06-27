@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { CrgbPattern } from 'src/app/constants/patterns.constant';
 import { EFields } from 'src/app/enums/fields.enum';
@@ -14,7 +14,7 @@ import { CFormGeneralStyle } from '../../form-general-style.constant';
 })
 export class FieldStylesComponent implements OnInit {
   option: string;
-  form: FormGroup;
+  form: UntypedFormGroup;
   rgbPattern = CrgbPattern;
 
   generalStyle = CFormGeneralStyle;
@@ -24,7 +24,7 @@ export class FieldStylesComponent implements OnInit {
 
   constructor(
     private fieldTransferService: FieldTransferService,
-    private formBuilder: FormBuilder
+    private formBuilder: UntypedFormBuilder
   ) {}
 
   ngOnInit(): void {

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, Validators, FormBuilder } from '@angular/forms';
+import { UntypedFormGroup, Validators, UntypedFormBuilder } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { CrgbPattern } from 'src/app/constants/patterns.constant';
 import { IFormStyleConfig } from 'src/app/interfaces/form.interface';
@@ -15,11 +15,11 @@ import { CFormGeneralStyle } from '../../form-general-style.constant';
 export class FormStylesComponent implements OnInit {
   formStyle$ = this.store.select(selectFormStyle);
 
-  form: FormGroup;
+  form: UntypedFormGroup;
   rgbPattern = CrgbPattern;
   generalStyle = CFormGeneralStyle;
 
-  constructor(private formBuilder: FormBuilder, private store: Store) {}
+  constructor(private formBuilder: UntypedFormBuilder, private store: Store) {}
 
   ngOnInit(): void {
     this.formStyle$.subscribe((data) => {
