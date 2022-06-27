@@ -107,7 +107,7 @@ export class FieldStylesComponent implements OnInit {
   }
 
   addOption(): void {
-    const options = [...this.form.value.items, this.option];
+    const options = [...this.form.value.items || [], this.option];
     this.form.get('items')?.setValue(options);
     this.option = '';
   }
@@ -123,6 +123,8 @@ export class FieldStylesComponent implements OnInit {
       ...this.pickedField,
       style: styleConfigs,
     };
+
+    this.form.reset()
     this.store.dispatch(setFieldStyle({ updatedField: this.pickedField }));
   }
 

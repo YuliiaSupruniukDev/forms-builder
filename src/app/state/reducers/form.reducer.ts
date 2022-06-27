@@ -1,7 +1,7 @@
-import { createReducer, on } from '@ngrx/store';
-
+import { Action } from '@ngrx/store';
+import { FormStyleActions } from '../actions/enums/form.enum';
 import { IFormStyleConfig } from 'src/app/interfaces/form.interface';
-import { setFormStyle } from '../actions/form.actions';
+import { TFormStyleActions } from '../actions/form.actions';
 
 export const initialState: IFormStyleConfig = {
   label: '',
@@ -11,7 +11,15 @@ export const initialState: IFormStyleConfig = {
   borderColor: '',
 };
 
-export const formStyleReducer = createReducer(
-  initialState,
-  on(setFormStyle, (state, { formStyle }) => formStyle)
-);
+export const formStyleReducer = (
+  state = initialState,
+  action: Action
+): IFormStyleConfig => {
+  const formStyleAction = action as TFormStyleActions;
+  switch (formStyleAction.type) {
+    case FormStyleActions.SetFormStyle:
+      return { ...formStyleAction.payload };
+    default:
+      return state;
+  }
+};

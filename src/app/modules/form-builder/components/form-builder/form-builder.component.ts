@@ -96,6 +96,10 @@ export class FormBuilderComponent implements OnInit {
     this.renderer.removeClass(this.currentElement, 'active');
   }
 
+  saveForm() {
+    alert("Form saved!")
+  }
+
   onDestroy() {
     this.$fieldStylesSubscription.unsubscribe();
   }

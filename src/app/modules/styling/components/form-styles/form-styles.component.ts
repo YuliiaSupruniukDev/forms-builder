@@ -1,12 +1,16 @@
 import { Component, OnInit } from '@angular/core';
-import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
+import {
+  UntypedFormBuilder,
+  UntypedFormGroup,
+  Validators,
+} from '@angular/forms';
 
 import { CFormGeneralStyle } from '../../form-general-style.constant';
 import { CrgbPattern } from 'src/app/constants/patterns.constant';
 import { IFormStyleConfig } from 'src/app/interfaces/form.interface';
+import { SetFormStyleAction } from 'src/app/state/actions/form.actions';
 import { Store } from '@ngrx/store';
 import { selectFormStyle } from 'src/app/state/selectors/form.selectors';
-import { setFormStyle } from 'src/app/state/actions/form.actions';
 
 @Component({
   selector: 'app-form-styles',
@@ -54,6 +58,6 @@ export class FormStylesComponent implements OnInit {
 
   submit(): void {
     const style: IFormStyleConfig = this.form.value;
-    this.store.dispatch(setFormStyle({ formStyle: style }));
+    this.store.dispatch(new SetFormStyleAction(style));
   }
 }
