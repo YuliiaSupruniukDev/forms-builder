@@ -7,17 +7,17 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { CommonModule } from '@angular/common';
 import { AuthComponent } from './pages/auth/auth.component';
+import { StoreModule } from '@ngrx/store';
+import { formStyleReducer } from './state/reducers/form.reducer';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    AuthComponent
-  ],
+  declarations: [AppComponent, AuthComponent],
   imports: [
     CommonModule,
     BrowserModule,
     AppRoutingModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    StoreModule.forRoot({ formStyle: formStyleReducer }),
   ],
   providers: [],
   bootstrap: [AppComponent],

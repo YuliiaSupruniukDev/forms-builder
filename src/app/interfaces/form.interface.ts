@@ -1,4 +1,4 @@
-export interface Form {
+export interface IFormStyleConfig {
   label: string;
   color: string;
   backgroundColor: string;
