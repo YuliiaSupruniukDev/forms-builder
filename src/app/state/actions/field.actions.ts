@@ -12,3 +12,8 @@ export const setFieldStyle = createAction(
   FieldStyleActions.SetFieldStyle,
   props<{ updatedField: IElement }>()
 );
+
+export const deleteField = createAction(
+  FieldStyleActions.DeleteField,
+  props<{ key: string }>()
+);

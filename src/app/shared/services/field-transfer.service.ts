@@ -1,6 +1,6 @@
+import { IElement } from 'src/app/interfaces/element.interface';
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
-import { IElement } from 'src/app/interfaces/element.interface';
 
 @Injectable({
   providedIn: 'root',

@@ -96,6 +96,9 @@ export class FormBuilderComponent implements OnInit {
     this.renderer.removeClass(this.currentElement, 'active');
   }
 
+  deleteField(key: string): void {
+  }
+
   saveForm() {
     alert("Form saved!")
   }
