@@ -1,5 +1,5 @@
-import { Injectable } from '@angular/core';
 import { ControlValueAccessor } from '@angular/forms';
+import { Injectable } from '@angular/core';
 
 @Injectable({
   providedIn: 'root',
@@ -10,7 +10,7 @@ export abstract class ValueController implements ControlValueAccessor {
   onChange: any = () => {};
   onTouch: any = () => {};
 
-  set value(val: any) {
+  set value(val: string) {
     this.inputValue = val;
     this.onChange(val);
     this.onTouch(val);
@@ -20,7 +20,7 @@ export abstract class ValueController implements ControlValueAccessor {
     return this.inputValue;
   }
 
-  writeValue(value: any): void {
+  writeValue(value: string): void {
     this.value = value;
   }
 

@@ -44,7 +44,7 @@ export class FieldStylesComponent implements OnInit {
 
   getFieldStyle(key: string): void {
     const fieldStyleChangeSubscription = this.store
-      .select(getFieldByKey, { key })
+      .select(getFieldByKey, key)
       .subscribe((value) => {
         this.pickedField = value;
         this.initForm();

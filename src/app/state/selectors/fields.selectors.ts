@@ -1,4 +1,5 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
+
 import { IElement } from 'src/app/interfaces/element.interface';
 
 export const selectFieldsStyle =
@@ -6,6 +7,6 @@ export const selectFieldsStyle =
 
 export const getFieldByKey = createSelector(
   selectFieldsStyle,
-  (fieldsStyle: any, props: any) =>
-    fieldsStyle.filter((field: IElement) => field.key === props.key)[0]
+  (fieldsStyle: IElement[], key: string) =>
+    fieldsStyle.filter((field: IElement) => field.key === key)[0]
 );

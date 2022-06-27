@@ -1,1 +1,1 @@
-export const fieldsList = ['Input', 'Textarea', 'Button', 'Checkbox', 'Select'];
+export const CFieldsList = ['Input', 'Textarea', 'Button', 'Checkbox', 'Select'];

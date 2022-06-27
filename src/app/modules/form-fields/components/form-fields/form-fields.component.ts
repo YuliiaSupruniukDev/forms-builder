@@ -1,5 +1,5 @@
+import { CFieldsList } from 'src/app/constants/fieldsList.constant';
 import { Component } from '@angular/core';
-import { fieldsList } from 'src/app/constants/fieldsList.constant';
 
 @Component({
   selector: 'app-form-fields',
@@ -7,5 +7,5 @@ import { fieldsList } from 'src/app/constants/fieldsList.constant';
   styleUrls: ['./form-fields.component.scss'],
 })
 export class FormFieldsComponent {
-  fields = fieldsList;
+  fields = CFieldsList;
 }

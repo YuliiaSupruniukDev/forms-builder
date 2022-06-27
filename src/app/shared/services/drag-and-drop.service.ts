@@ -13,7 +13,7 @@ export class DragAndDropService {
     event: CdkDragDrop<string[]>,
     elementsArr: IElementItemKey[]
   ): IElementItemKey[] {
-    let item: any = event.previousContainer.data[event.previousIndex];
+    let item: string = event.previousContainer.data[event.previousIndex];
     event.container.data.splice(event.currentIndex, 0, item);
 
     return this.setElementsArray(event.currentIndex, item, elementsArr);
