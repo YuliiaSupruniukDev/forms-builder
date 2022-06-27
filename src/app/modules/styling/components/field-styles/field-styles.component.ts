@@ -29,7 +29,7 @@ export class FieldStylesComponent implements OnInit {
 
   ngOnInit(): void {
     this.onFieldChange();
-    this.initForm();
+    //this.initForm();
   }
 
   initForm(): void {
@@ -48,7 +48,10 @@ export class FieldStylesComponent implements OnInit {
       ]),
       borderType: this.formBuilder.control('', [Validators.required]),
       isRequired: this.formBuilder.control(false),
-      items: this.formBuilder.control([], [Validators.required]),
+      items: this.formBuilder.control(
+        [],
+        this.hasOptions() ? Validators.required : []
+      ),
     });
   }
 
@@ -56,21 +59,23 @@ export class FieldStylesComponent implements OnInit {
     this.pickedFieldSubscription =
       this.fieldTransferService.pickedField.subscribe((value: IElement) => {
         this.pickedField = value;
+        this.initForm();
       });
   }
 
   hasOptions(): boolean {
     return (
-      [EFields.Checkbox, EFields.Select].indexOf(this.pickedField.type) > -1
+      [EFields.Checkbox, EFields.Select].indexOf(this.pickedField?.type) > -1
     );
   }
 
   addOption(): void {
     const options = [...this.form.value.items, this.option];
     this.form.get('items')?.setValue(options);
+    this.option = '';
   }
 
-  submit(): void{
+  submit(): void {
     console.log(this.form.value);
   }
 

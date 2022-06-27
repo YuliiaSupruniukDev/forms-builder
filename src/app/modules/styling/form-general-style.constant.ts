@@ -37,6 +37,7 @@ export const CFormGeneralStyle = {
   width: {
     ...CInputConfiguration,
     label: 'Width',
+    suffix: 'px',
   },
   height: {
     ...CInputConfiguration,

@@ -1,4 +1,4 @@
-<div *ngIf="pickedField">
+<div *ngIf="form?.get('label')">
   <form [formGroup]="form">
     <h3 *ngIf="pickedField">
       {{ pickedField.type + " " + pickedField.index }}
