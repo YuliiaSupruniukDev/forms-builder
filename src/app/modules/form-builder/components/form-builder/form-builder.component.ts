@@ -1,4 +1,3 @@
-import { CdkDragDrop } from '@angular/cdk/drag-drop';
 import {
   Component,
   ElementRef,
@@ -6,16 +5,19 @@ import {
   Renderer2,
   ViewChild,
 } from '@angular/core';
-import { Store } from '@ngrx/store';
-import { EFields } from 'src/app/enums/fields.enum';
 import {
   IElement,
   IElementItemKey,
 } from 'src/app/interfaces/element.interface';
+
+import { CdkDragDrop } from '@angular/cdk/drag-drop';
 import { DragAndDropService } from 'src/app/shared/services/drag-and-drop.service';
+import { EFields } from 'src/app/enums/fields.enum';
 import { FieldTransferService } from 'src/app/shared/services/field-transfer.service';
-import { setFields } from 'src/app/state/actions/field.actions';
+import { Store } from '@ngrx/store';
+import { Subscription } from 'rxjs';
 import { selectFieldsStyle } from 'src/app/state/selectors/fields.selectors';
+import { setFields } from 'src/app/state/actions/field.actions';
 
 @Component({
   selector: 'app-form-builder',
@@ -24,15 +26,17 @@ import { selectFieldsStyle } from 'src/app/state/selectors/fields.selectors';
 })
 export class FormBuilderComponent implements OnInit {
   $fieldStyles = this.store.select(selectFieldsStyle);
-  currentElement: any;
+  $fieldStylesSubscription: Subscription;
+
+  currentElement: ElementRef;
   FIELDS = EFields;
 
   fieldsKeyList: IElementItemKey[] = [];
   fieldsList: string[] = [];
 
-  fieldsInfoArr: IElement[] = []; //temp, will be object for store with style, index and typeof input
+  fieldsInfoArr: IElement[] = [];
 
-  @ViewChild('items') items: ElementRef<any>;
+  @ViewChild('items') items: ElementRef;
 
   constructor(
     private dragAndDropService: DragAndDropService,
@@ -42,8 +46,19 @@ export class FormBuilderComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.$fieldStyles.subscribe((v) => {
-      console.log('field -------', v);
+    this.$fieldStylesSubscription = this.$fieldStyles.subscribe(
+      (fields: IElement[]) => {
+        this.updateFieldStyle(fields);
+      }
+    );
+  }
+
+  updateFieldStyle(fields: IElement[]): void {
+    this.fieldsKeyList.map((field) => {
+      let newField = fields.filter(
+        (item: IElementItemKey) => item.key == field.key
+      )[0];
+      field.style = newField.style;
     });
   }
 
@@ -59,10 +74,9 @@ export class FormBuilderComponent implements OnInit {
 
   initFormFields(): void {
     for (let i = 0; i < this.fieldsKeyList.length; i++) {
-      let field: IElement = {
+      const field: IElement = {
         ...this.fieldsKeyList[i],
         index: i,
-        style: undefined,
       };
       this.fieldsInfoArr.push(field);
     }
@@ -71,9 +85,7 @@ export class FormBuilderComponent implements OnInit {
   }
 
   pickField(field: IElement): void {
-    if (this.currentElement) {
-      this.unpickPreviousField();
-    }
+    if (this.currentElement) this.unpickPreviousField();
     this.currentElement = this.items.nativeElement.children[field.index];
     this.renderer.addClass(this.currentElement, 'active');
 
@@ -82,5 +94,9 @@ export class FormBuilderComponent implements OnInit {
 
   unpickPreviousField(): void {
     this.renderer.removeClass(this.currentElement, 'active');
+  }
+
+  onDestroy() {
+    this.$fieldStylesSubscription.unsubscribe();
   }
 }

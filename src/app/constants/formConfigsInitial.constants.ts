@@ -30,6 +30,7 @@ export const CCustomSelectConfiguration = {
 };
 
 export const CCustomCheckboxConfiguration = {
+  ...CCustomInputConfiguration,
   label: 'Checkbox label',
 };
 

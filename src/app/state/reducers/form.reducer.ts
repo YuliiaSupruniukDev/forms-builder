@@ -1,4 +1,5 @@
 import { createReducer, on } from '@ngrx/store';
+
 import { IFormStyleConfig } from 'src/app/interfaces/form.interface';
 import { setFormStyle } from '../actions/form.actions';
 
@@ -12,5 +13,5 @@ export const initialState: IFormStyleConfig = {
 
 export const formStyleReducer = createReducer(
   initialState,
-  on(setFormStyle, (state, { form }) => ({ ...form }))
+  on(setFormStyle, (state, { formStyle }) => formStyle)
 );

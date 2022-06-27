@@ -35,6 +35,7 @@ export interface ICustomField {
   color: string;
   borderStyle: EBorderStyle;
   isRequired: boolean;
+  items?: string[];
 }
 
 export interface ICustomInput extends ICustomField {
@@ -49,10 +50,7 @@ export interface ICustomSelect extends ICustomField {
 
 export interface ICustomButton extends ICustomField {}
 
-export interface ICustomCheckbox {
-  label: string;
-  items?: string[];
-}
+export interface ICustomCheckbox extends ICustomField {}
 
 export type TCustomField =
   | ICustomInput

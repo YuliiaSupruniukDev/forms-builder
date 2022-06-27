@@ -1,7 +1,9 @@
 import { createAction, props } from '@ngrx/store';
+
+import { FormStyleActions } from './enums/form.enum';
 import { IFormStyleConfig } from 'src/app/interfaces/form.interface';
 
 export const setFormStyle = createAction(
-  '[Form Style] Set Style',
-  props<{ form: IFormStyleConfig }>()
+  FormStyleActions.SetFormStyle,
+  props<{ formStyle: IFormStyleConfig }>()
 );

@@ -1,7 +1,8 @@
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
-import { Injectable } from '@angular/core';
+
 import { EFields } from 'src/app/enums/fields.enum';
 import { IElementItemKey } from 'src/app/interfaces/element.interface';
+import { Injectable } from '@angular/core';
 import { v4 as uuid } from 'uuid';
 
 @Injectable({

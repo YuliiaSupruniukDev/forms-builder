@@ -1,7 +1,14 @@
 import { createAction, props } from '@ngrx/store';
+
+import { FieldStyleActions } from './enums/field.enum';
 import { IElement } from 'src/app/interfaces/element.interface';
 
 export const setFields = createAction(
-  '[Fields Style] Set Fields',
+  FieldStyleActions.SetFormFields,
   props<{ fields: IElement[] }>()
+);
+
+export const setFieldStyle = createAction(
+  FieldStyleActions.SetFieldStyle,
+  props<{ updatedField: IElement }>()
 );
