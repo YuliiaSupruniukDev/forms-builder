@@ -53,3 +53,10 @@ export interface ICustomCheckbox {
   label: string;
   items?: string[];
 }
+
+export type TCustomField =
+  | ICustomInput
+  | ICustomTextarea
+  | ICustomCheckbox
+  | ICustomSelect
+  | ICustomButton;

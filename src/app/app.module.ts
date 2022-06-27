@@ -9,6 +9,7 @@ import { CommonModule } from '@angular/common';
 import { AuthComponent } from './pages/auth/auth.component';
 import { StoreModule } from '@ngrx/store';
 import { formStyleReducer } from './state/reducers/form.reducer';
+import { fieldStyleReducer } from './state/reducers/fields.reducer';
 
 @NgModule({
   declarations: [AppComponent, AuthComponent],
@@ -17,7 +18,7 @@ import { formStyleReducer } from './state/reducers/form.reducer';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    StoreModule.forRoot({ formStyle: formStyleReducer }),
+    StoreModule.forRoot({ formStyle: formStyleReducer, fieldsStyle: fieldStyleReducer }),
   ],
   providers: [],
   bootstrap: [AppComponent],

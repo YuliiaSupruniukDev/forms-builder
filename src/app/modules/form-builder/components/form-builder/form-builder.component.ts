@@ -2,20 +2,26 @@ import { CdkDragDrop } from '@angular/cdk/drag-drop';
 import {
   Component,
   ElementRef,
+  OnInit,
   Renderer2,
-  ViewChild
+  ViewChild,
 } from '@angular/core';
+import { Store } from '@ngrx/store';
 import { EFields } from 'src/app/enums/fields.enum';
 import { IElement } from 'src/app/interfaces/element.interface';
 import { DragAndDropService } from 'src/app/shared/services/drag-and-drop.service';
 import { FieldTransferService } from 'src/app/shared/services/field-transfer.service';
+import { setFields } from 'src/app/state/actions/field.actions';
+import { selectFieldsStyle } from 'src/app/state/selectors/fields.selectors';
 
 @Component({
   selector: 'app-form-builder',
   templateUrl: './form-builder.component.html',
   styleUrls: ['./form-builder.component.scss'],
 })
-export class FormBuilderComponent {
+export class FormBuilderComponent implements OnInit {
+  $fieldStyles = this.store.select(selectFieldsStyle);
+
   currentElement: any;
   FIELDS = EFields;
   formObj: IElement[] = []; //temp, will be object for store with style, index and typeof input
@@ -27,9 +33,15 @@ export class FormBuilderComponent {
   constructor(
     private dragAndDropService: DragAndDropService,
     private fieldTransferService: FieldTransferService,
+    private store: Store,
     private renderer: Renderer2
   ) {}
 
+  ngOnInit() {
+    this.$fieldStyles.subscribe((v) => {
+      console.log('field -------', v);
+    });
+  }
   onDrop(event: CdkDragDrop<string[]>): void {
     this.dragAndDropService.drop(event);
     this.formObj = [];
@@ -45,6 +57,8 @@ export class FormBuilderComponent {
       };
       this.formObj.push(field);
     }
+
+    this.store.dispatch(setFields({ fields: [...this.formObj] }));
   }
 
   pickField(field: IElement): void {
