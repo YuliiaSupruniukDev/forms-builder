@@ -1,15 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import {
-  FormBuilder,
-  FormGroup,
-  Validators,
-} from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { CFormGeneralStyle } from '../../form-general-style.constant';
 import { CrgbPattern } from 'src/app/constants/patterns.constant';
 import { IFormStyleConfig } from 'src/app/interfaces/form.interface';
 import { SetFormStyleAction } from 'src/app/state/actions/form.actions';
 import { Store } from '@ngrx/store';
+import { Subscription } from 'rxjs';
 import { selectFormStyle } from 'src/app/state/selectors/form.selectors';
 
 @Component({
@@ -20,6 +17,8 @@ import { selectFormStyle } from 'src/app/state/selectors/form.selectors';
 export class FormStylesComponent implements OnInit {
   formStyle$ = this.store.select(selectFormStyle);
 
+  formStyleSubscription: Subscription;
+
   form: FormGroup;
   rgbPattern = CrgbPattern;
   generalStyle = CFormGeneralStyle;
@@ -27,7 +26,11 @@ export class FormStylesComponent implements OnInit {
   constructor(private formBuilder: FormBuilder, private store: Store) {}
 
   ngOnInit(): void {
-    this.formStyle$.subscribe((data) => {
+    this.observeFormStyle();
+  }
+
+  observeFormStyle(): void {
+    this.formStyleSubscription = this.formStyle$.subscribe((data) => {
       this.initForm(data);
     });
   }
@@ -59,5 +62,9 @@ export class FormStylesComponent implements OnInit {
   submit(): void {
     const style: IFormStyleConfig = this.form.value;
     this.store.dispatch(new SetFormStyleAction(style));
+  }
+
+  onDestroy(): void {
+    this.formStyleSubscription.unsubscribe();
   }
 }

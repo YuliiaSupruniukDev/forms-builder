@@ -1,5 +1,6 @@
 import { EAppearance, EWidthUnit } from '../enums/style.enums';
 
+import { EColors } from '../enums/colors.enum';
 import { EFields } from '../enums/fields.enum';
 
 export const CCustomInputConfiguration = {
@@ -9,7 +10,7 @@ export const CCustomInputConfiguration = {
   height: '',
   fontSize: '14',
   fontWeight: 400,
-  color: '(0,0,0)',
+  color: EColors.Black,
   borderStyle: 'solid',
   isRequired: true,
 };
@@ -56,8 +57,8 @@ export const CInputConfiguration = {
 
 export const CInitFormConfiguration = {
   label: 'Form label',
-  color: '(0, 0, 0)',
-  backgroundColor: '(255,255,255)',
+  color: EColors.Black,
+  backgroundColor: EColors.White,
   borderStyle: 'solid',
-  borderColor: '(194, 214, 225)',
+  borderColor: EColors.LightGray,
 };

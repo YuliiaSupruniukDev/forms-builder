@@ -12,6 +12,7 @@ import { DragAndDropService } from 'src/app/shared/services/drag-and-drop.servic
 import { EFields } from 'src/app/enums/fields.enum';
 import { FieldTransferService } from 'src/app/shared/services/field-transfer.service';
 import { IElement } from 'src/app/interfaces/element.interface';
+import { IFormStyleConfig } from 'src/app/interfaces/form.interface';
 import { Store } from '@ngrx/store';
 import { Subscription } from 'rxjs';
 import { selectFieldsStyle } from 'src/app/state/selectors/fields.selectors';
@@ -23,9 +24,10 @@ import { selectFormStyle } from 'src/app/state/selectors/form.selectors';
   styleUrls: ['./form-builder.component.scss'],
 })
 export class FormBuilderComponent implements OnInit {
-  $formStyle = this.store.select(selectFormStyle)
-  $fieldStyles = this.store.select(selectFieldsStyle);
-  $fieldStylesSubscription: Subscription;
+  formStyle$ = this.store.select(selectFormStyle);
+  fieldStyles$ = this.store.select(selectFieldsStyle);
+
+  subs: Subscription[] = [];
 
   currentElement: ElementRef;
   FIELDS = EFields;
@@ -33,9 +35,9 @@ export class FormBuilderComponent implements OnInit {
   fieldsList: string[] = [];
 
   fieldsInfoArr: IElement[] = [];
-  configs = CInitFormConfiguration;
+  configs: IFormStyleConfig = CInitFormConfiguration;
   @ViewChild('items') items: ElementRef;
-  
+
   constructor(
     private dragAndDropService: DragAndDropService,
     private fieldTransferService: FieldTransferService,
@@ -43,16 +45,27 @@ export class FormBuilderComponent implements OnInit {
     private renderer: Renderer2
   ) {}
 
-  ngOnInit() {
-    this.$fieldStylesSubscription = this.$fieldStyles.subscribe(
+  ngOnInit(): void {
+    this.observeFieldStyle();
+    this.observeFormStyle();
+  }
+
+  observeFieldStyle(): void {
+    const fieldStylesSubscription = this.fieldStyles$.subscribe(
       (fields: IElement[]) => {
         this.fieldsInfoArr = [...fields];
       }
     );
 
-    this.$formStyle.subscribe(val => {
+    this.subs.push(fieldStylesSubscription);
+  }
+
+  observeFormStyle(): void {
+    const formStyleSubscription = this.formStyle$.subscribe((val) => {
       this.configs = val;
-    })
+    });
+
+    this.subs.push(formStyleSubscription);
   }
 
   onDrop(event: CdkDragDrop<string[]>): void {
@@ -87,6 +100,6 @@ export class FormBuilderComponent implements OnInit {
   }
 
   onDestroy() {
-    this.$fieldStylesSubscription.unsubscribe();
+    this.subs.forEach((sub) => sub.unsubscribe());
   }
 }

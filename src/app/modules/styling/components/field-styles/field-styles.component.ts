@@ -117,7 +117,6 @@ export class FieldStylesComponent implements OnInit {
       style: styleConfigs,
     } as IElement ;
 
-    console.log(this.pickedField)
     this.store.dispatch(setFieldStyle({ updatedField: this.pickedField }));
   }
 
