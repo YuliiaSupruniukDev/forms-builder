@@ -1,0 +1,11 @@
+<h3 mat-dialog-title class="center">Form Data</h3>
+<div mat-dialog-content>
+  <pre>{{ data | json }}</pre>
+</div>
+<div mat-dialog-actions>
+  <app-custom-button
+    (click)="close()"
+    [buttonText]="'Close'"
+    width="40%"
+  ></app-custom-button>
+</div>

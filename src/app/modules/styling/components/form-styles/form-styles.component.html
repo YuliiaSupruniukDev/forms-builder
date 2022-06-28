@@ -1,0 +1,35 @@
+<form [formGroup]="form" *ngIf="form">
+  <app-input
+    [configs]="generalStyle.label"
+    [formControl]="form.controls['label']"
+  ></app-input>
+
+  <div class="flex">
+    <app-input
+      [configs]="generalStyle.textColor"
+      [formControl]="form.controls['color']"
+    ></app-input>
+    <app-input
+      [configs]="generalStyle.backgroundColor"
+      [formControl]="form.controls['backgroundColor']"
+    ></app-input>
+  </div>
+
+  <div class="flex">
+    <app-select
+      [configs]="generalStyle.borderStyle"
+      [formControl]="form.controls['borderStyle']"
+    ></app-select>
+
+    <app-input
+      [configs]="generalStyle.borderColor"
+      [formControl]="form.controls['borderColor']"
+    ></app-input>
+  </div>
+
+  <div class="button">
+    <button mat-stroked-button (click)="submit()" [disabled]="!form.valid">
+      Apply
+    </button>
+  </div>
+</form>
