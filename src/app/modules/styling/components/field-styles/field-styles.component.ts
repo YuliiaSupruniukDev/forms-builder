@@ -47,7 +47,6 @@ export class FieldStylesComponent implements OnInit {
   }
 
   initForm(): void {
-    console.log("this.pickedField?.style.isRequired",
       this.pickedField?.style.isRequired)
     this.form = this.formBuilder.group({
       label: this.formBuilder.control(this.pickedField?.style.label, [
@@ -104,8 +103,6 @@ export class FieldStylesComponent implements OnInit {
       ...this.form.value,
       isRequired: formData.isRequired ? true : false,
     };
-
-    console.log(styleConfigs.isRequired)
 
     this.pickedField = {
       ...this.pickedField,

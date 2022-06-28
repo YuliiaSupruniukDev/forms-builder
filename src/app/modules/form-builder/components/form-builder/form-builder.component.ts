@@ -19,6 +19,8 @@ import { EFields } from 'src/app/enums/fields.enum';
 import { FieldTransferService } from 'src/app/shared/services/field-transfer.service';
 import { IElement } from 'src/app/interfaces/element.interface';
 import { IFormStyleConfig } from 'src/app/interfaces/form.interface';
+import { MatDialog } from '@angular/material/dialog';
+import { ModalWindowComponent } from 'src/app/shared/components/modal-window/modal-window.component';
 import { Store } from '@ngrx/store';
 import { Subscription } from 'rxjs';
 import { selectFieldsStyle } from 'src/app/state/selectors/fields.selectors';
@@ -51,7 +53,8 @@ export class FormBuilderComponent implements OnInit {
     private fieldTransferService: FieldTransferService,
     private store: Store,
     private renderer: Renderer2,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    public dialog: MatDialog
   ) {}
 
   ngOnInit(): void {
@@ -76,7 +79,6 @@ export class FormBuilderComponent implements OnInit {
 
   addNewControl(field: IElement) {
     const isRequired = field.style.isRequired;
-    console.log(isRequired);
     this.form.addControl(
       field.key,
       this.formBuilder.control('', isRequired ? Validators.required : [])
@@ -87,8 +89,6 @@ export class FormBuilderComponent implements OnInit {
     this.form.controls[field.key].setValidators(
       field.style.isRequired ? Validators.required : []
     );
-
-    console.log(field.style.isRequired)
   }
 
   pickField(field: IElement): void {
@@ -106,8 +106,10 @@ export class FormBuilderComponent implements OnInit {
   }
 
   saveForm() {
-    alert('Form saved!');
-    console.log(this.form.value);
+    this.dialog.open(ModalWindowComponent, {
+      width: '40%',
+      data: this.form.value,
+    });
   }
 
   deleteControl(key: string): void {
