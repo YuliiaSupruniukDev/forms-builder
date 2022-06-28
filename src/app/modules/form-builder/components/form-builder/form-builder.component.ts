@@ -77,7 +77,7 @@ export class FormBuilderComponent implements OnInit {
     this.fieldTransferService.fildsList = this.fieldsInfoArr;
   }
 
-  addNewControl(field: IElement) {
+  addNewControl(field: IElement): void {
     const isRequired = field.style.isRequired;
     this.form.addControl(
       field.key,
@@ -85,7 +85,7 @@ export class FormBuilderComponent implements OnInit {
     );
   }
 
-  changeValidation(field: IElement) {
+  changeValidation(field: IElement): void {
     this.form.controls[field.key].setValidators(
       field.style.isRequired ? Validators.required : []
     );
@@ -105,7 +105,7 @@ export class FormBuilderComponent implements OnInit {
     this.renderer.removeClass(this.currentElement, 'active');
   }
 
-  saveForm() {
+  saveForm(): void {
     this.dialog.open(ModalWindowComponent, {
       width: '40%',
       data: this.form.value,
@@ -149,7 +149,7 @@ export class FormBuilderComponent implements OnInit {
     this.subs.push(fieldDeletionSubsctiption);
   }
 
-  onDestroy() {
+  onDestroy(): void {
     this.subs.forEach((sub) => sub.unsubscribe());
   }
 }

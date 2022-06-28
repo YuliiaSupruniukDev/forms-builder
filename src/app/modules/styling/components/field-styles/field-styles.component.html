@@ -23,7 +23,8 @@
         [formControl]="form.controls['label']"
       ></app-input>
     </ng-template>
-    <div class="flex">
+
+    <div class="flex" *ngIf="!hasOptions()">
       <app-input
         [configs]="generalStyle.width"
         [formControl]="form.controls['width']"
@@ -54,6 +55,7 @@
       <app-select
         [configs]="generalStyle.borderStyle"
         [formControl]="form.controls['borderStyle']"
+        *ngIf="pickedField.type !== FIELDS.Checkbox"
       ></app-select>
     </div>
 

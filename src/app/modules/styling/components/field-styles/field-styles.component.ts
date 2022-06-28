@@ -17,6 +17,8 @@ import { setFieldStyle } from 'src/app/state/actions/field.actions';
   styleUrls: ['./field-styles.component.scss'],
 })
 export class FieldStylesComponent implements OnInit {
+  FIELDS = EFields
+
   option: string;
   form: FormGroup;
   rgbPattern = CrgbPattern;
