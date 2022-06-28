@@ -33,7 +33,7 @@ export interface ICustomField {
   fontSize: string;
   fontWeight: number;
   color: string;
-  borderStyle: EBorderStyle;
+  borderStyle: string;
   isRequired: boolean;
   items?: string[];
 }

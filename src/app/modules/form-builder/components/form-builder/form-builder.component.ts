@@ -76,6 +76,7 @@ export class FormBuilderComponent implements OnInit {
 
   saveForm() {
     alert('Form saved!');
+    console.log(this.fieldsInfoArr);
   }
 
   onDestroy() {

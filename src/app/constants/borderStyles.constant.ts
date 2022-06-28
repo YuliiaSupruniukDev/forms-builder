@@ -10,3 +10,14 @@ export const CBorderStyles = [
   'none',
   'hidden',
 ];
+
+export const CFontWeight = [
+  '100',
+  '200',
+  '300',
+  '400',
+  '500',
+  '600',
+  '700',
+  '800',
+];

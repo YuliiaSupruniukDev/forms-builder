@@ -1,4 +1,8 @@
-import { CBorderStyles } from 'src/app/constants/borderStyles.constant';
+import {
+  CBorderStyles,
+  CFontWeight,
+} from 'src/app/constants/borderStyles.constant';
+
 import { CInputConfiguration } from 'src/app/constants/formConfigsInitial.constants';
 import { EWidthUnit } from 'src/app/enums/style.enums';
 
@@ -52,7 +56,7 @@ export const CFormGeneralStyle = {
   fontWeight: {
     ...CInputConfiguration,
     label: 'Font weight',
-    items: ['100', '200', '300', '400'],
+    items: CFontWeight,
   },
   color: {
     ...CInputConfiguration,

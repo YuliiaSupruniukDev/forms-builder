@@ -1,4 +1,4 @@
-import { EAppearance, EBorderStyle, EWidthUnit } from '../enums/style.enums';
+import { EAppearance, EWidthUnit } from '../enums/style.enums';
 
 import { EFields } from '../enums/fields.enum';
 
@@ -6,11 +6,11 @@ export const CCustomInputConfiguration = {
   label: '',
   placeholder: 'Input label',
   width: '',
-  height: 'auto',
+  height: '',
   fontSize: '14',
   fontWeight: 400,
   color: '(0,0,0)',
-  borderStyle: EBorderStyle.Solid,
+  borderStyle: 'solid',
   isRequired: true,
 };
 
