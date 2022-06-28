@@ -1,0 +1,13 @@
+<label>{{ configs.label }}</label>
+<textarea
+  class="textarea custom-input"
+  [placeholder]="configs.placeholder"
+  [style.width.px]="configs.width"
+  [style.height.px]="configs.height"
+  [style.fontSize.px]="configs.fontSize"
+  [style.fontWeight]="configs.fontWeight"
+  [style.color]="'rgb' + configs.color"
+  [style.borderStyle]="configs.borderStyle"
+  [required]="configs.isRequired"
+  [(ngModel)]="value"
+></textarea>
