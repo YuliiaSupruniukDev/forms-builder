@@ -1,6 +1,6 @@
-import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AuthComponent } from './pages/auth/auth.component';
+
+import { NgModule } from '@angular/core';
 
 const routes: Routes = [
   {
@@ -8,7 +8,11 @@ const routes: Routes = [
     loadChildren: () =>
       import('src/app/pages/main/main.module').then((m) => m.MainModule),
   },
-  { path: 'login', component: AuthComponent },
+  {
+    path: 'login',
+    loadChildren: () =>
+      import('src/app/pages/auth/auth-routing.module').then((m) => m.AuthRoutingModule),
+  },
 ];
 
 @NgModule({
