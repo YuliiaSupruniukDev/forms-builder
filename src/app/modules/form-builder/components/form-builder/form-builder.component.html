@@ -13,7 +13,7 @@
       [ngSwitch]="field.type"
       (click)="pickField(field)"
     >
-      <app-custom-input *ngSwitchCase="FIELDS.Input"></app-custom-input>
+      <app-custom-input *ngSwitchCase="FIELDS.Input" [configs]="field.style"></app-custom-input>
       <app-custom-textarea
         *ngSwitchCase="FIELDS.Textarea"
       ></app-custom-textarea>

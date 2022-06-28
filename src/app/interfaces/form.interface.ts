@@ -2,6 +2,6 @@ export interface IFormStyleConfig {
   label: string;
   color: string;
   backgroundColor: string;
-  borderType: string;
+  borderStyle: string;
   borderColor: string;
 }

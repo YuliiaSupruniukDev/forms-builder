@@ -7,7 +7,7 @@ export const initialState: IFormStyleConfig = {
   label: '',
   color: '',
   backgroundColor: '',
-  borderType: '',
+  borderStyle: '',
   borderColor: '',
 };
 

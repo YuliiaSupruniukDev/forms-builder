@@ -1,14 +1,28 @@
-<div *ngIf="form">
+<div *ngIf="pickedField">
   <form [formGroup]="form">
     <h3 *ngIf="pickedField">
       {{ pickedField.type + " " + pickedField.key }}
       <!-- temp -->
     </h3>
-    <app-input
-      [configs]="generalStyle.label"
-      [formControl]="form.controls['label']"
-    ></app-input>
 
+    <div class="flex" *ngIf="hasPlaceholder();else withPlaceholder">
+      <app-input
+        [configs]="generalStyle.label"
+        [formControl]="form.controls['label']"
+      ></app-input>
+
+      <app-input
+        [configs]="generalStyle.placeholder"
+        [formControl]="form.controls['placeholder']"
+      ></app-input>
+    </div>
+
+    <ng-template #withPlaceholder>
+      <app-input
+        [configs]="generalStyle.label"
+        [formControl]="form.controls['label']"
+      ></app-input>
+    </ng-template>
     <div class="flex">
       <app-input
         [configs]="generalStyle.width"
@@ -38,8 +52,8 @@
         [formControl]="form.controls['color']"
       ></app-input>
       <app-select
-        [configs]="generalStyle.borderType"
-        [formControl]="form.controls['borderType']"
+        [configs]="generalStyle.borderStyle"
+        [formControl]="form.controls['borderStyle']"
       ></app-select>
     </div>
 
@@ -55,7 +69,7 @@
       ></app-custom-button>
       <app-custom-button
         [buttonText]="'Delete'"
-        (click)="deleteField()"
+        (click)="deleteField(pickedField.key)"
       ></app-custom-button>
     </div>
   </form>

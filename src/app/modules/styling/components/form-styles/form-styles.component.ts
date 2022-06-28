@@ -46,7 +46,7 @@ export class FormStylesComponent implements OnInit {
         Validators.required,
         Validators.pattern(this.rgbPattern),
       ]),
-      borderType: this.formBuilder.control(data.borderType, [
+      borderStyle: this.formBuilder.control(data.borderStyle, [
         Validators.required,
       ]),
       borderColor: this.formBuilder.control(data.borderColor, [

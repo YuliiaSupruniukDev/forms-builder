@@ -8,12 +8,12 @@ import { setFields } from 'src/app/state/actions/field.actions';
   providedIn: 'root',
 })
 export class FieldTransferService {
-  private field = new Subject<IElement>();
+  private field = new Subject<IElement | null>();
   private formFields: IElement[] = [];
 
   constructor(private store: Store) {}
 
-  set pickedField(value: IElement) {
+  set pickedField(value: IElement | null) {
     this.field.next(value);
   }
 

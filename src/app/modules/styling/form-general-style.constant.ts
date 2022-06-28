@@ -18,6 +18,10 @@ export const CFormGeneralStyle = {
     width: 100,
     widthUnits: EWidthUnit.Percent,
   },
+  placeholder: {
+    ...CInputConfiguration,
+    label: 'Input placeholder',
+  },
   textColor: {
     ...CInputConfiguration,
     label: 'Text Color',
@@ -28,7 +32,7 @@ export const CFormGeneralStyle = {
     label: 'Background',
     ...colorInput,
   },
-  borderType: {
+  borderStyle: {
     ...CInputConfiguration,
     label: 'Border type',
     items: CBorderStyles,
