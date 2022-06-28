@@ -6,6 +6,7 @@ import {
   ViewChild,
 } from '@angular/core';
 
+import { CInitFormConfiguration } from 'src/app/constants/formConfigsInitial.constants';
 import { CdkDragDrop } from '@angular/cdk/drag-drop';
 import { DragAndDropService } from 'src/app/shared/services/drag-and-drop.service';
 import { EFields } from 'src/app/enums/fields.enum';
@@ -14,6 +15,7 @@ import { IElement } from 'src/app/interfaces/element.interface';
 import { Store } from '@ngrx/store';
 import { Subscription } from 'rxjs';
 import { selectFieldsStyle } from 'src/app/state/selectors/fields.selectors';
+import { selectFormStyle } from 'src/app/state/selectors/form.selectors';
 
 @Component({
   selector: 'app-form-builder',
@@ -21,6 +23,7 @@ import { selectFieldsStyle } from 'src/app/state/selectors/fields.selectors';
   styleUrls: ['./form-builder.component.scss'],
 })
 export class FormBuilderComponent implements OnInit {
+  $formStyle = this.store.select(selectFormStyle)
   $fieldStyles = this.store.select(selectFieldsStyle);
   $fieldStylesSubscription: Subscription;
 
@@ -30,9 +33,9 @@ export class FormBuilderComponent implements OnInit {
   fieldsList: string[] = [];
 
   fieldsInfoArr: IElement[] = [];
-
+  configs = CInitFormConfiguration;
   @ViewChild('items') items: ElementRef;
-
+  
   constructor(
     private dragAndDropService: DragAndDropService,
     private fieldTransferService: FieldTransferService,
@@ -46,6 +49,10 @@ export class FormBuilderComponent implements OnInit {
         this.fieldsInfoArr = [...fields];
       }
     );
+
+    this.$formStyle.subscribe(val => {
+      this.configs = val;
+    })
   }
 
   onDrop(event: CdkDragDrop<string[]>): void {

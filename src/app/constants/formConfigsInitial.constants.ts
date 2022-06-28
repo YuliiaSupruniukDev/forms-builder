@@ -53,3 +53,11 @@ export const CInputConfiguration = {
   appearance: EAppearance.Fill,
   suffix: '',
 };
+
+export const CInitFormConfiguration = {
+  label: 'Form label',
+  color: '(0, 0, 0)',
+  backgroundColor: '(255,255,255)',
+  borderStyle: 'solid',
+  borderColor: '(194, 214, 225)',
+};

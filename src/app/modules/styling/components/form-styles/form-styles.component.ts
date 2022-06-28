@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {
-  UntypedFormBuilder,
-  UntypedFormGroup,
+  FormBuilder,
+  FormGroup,
   Validators,
 } from '@angular/forms';
 
@@ -20,11 +20,11 @@ import { selectFormStyle } from 'src/app/state/selectors/form.selectors';
 export class FormStylesComponent implements OnInit {
   formStyle$ = this.store.select(selectFormStyle);
 
-  form: UntypedFormGroup;
+  form: FormGroup;
   rgbPattern = CrgbPattern;
   generalStyle = CFormGeneralStyle;
 
-  constructor(private formBuilder: UntypedFormBuilder, private store: Store) {}
+  constructor(private formBuilder: FormBuilder, private store: Store) {}
 
   ngOnInit(): void {
     this.formStyle$.subscribe((data) => {
@@ -42,7 +42,7 @@ export class FormStylesComponent implements OnInit {
         Validators.required,
         Validators.pattern(this.rgbPattern),
       ]),
-      backgroundColor: this.formBuilder.control(data.borderColor, [
+      backgroundColor: this.formBuilder.control(data.backgroundColor, [
         Validators.required,
         Validators.pattern(this.rgbPattern),
       ]),

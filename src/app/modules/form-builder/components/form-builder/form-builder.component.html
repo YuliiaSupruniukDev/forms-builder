@@ -1,5 +1,11 @@
-<div class="section">
-  <h3 class="center title">Form Label</h3>
+<div
+  class="section"
+  [style.backgroundColor]="'rgb' + configs.backgroundColor"
+  [style.color]="'rgb' + configs.color"
+  [style.borderStyle]="configs.borderStyle"
+  [style.borderColor]="'rgb' + configs.borderColor"
+>
+  <h3 class="center title">{{ configs.label }}</h3>
   <div
     class="form-fields"
     cdkDropList

@@ -1,14 +1,11 @@
 import { Action } from '@ngrx/store';
+import { CInitFormConfiguration } from 'src/app/constants/formConfigsInitial.constants';
 import { FormStyleActions } from '../actions/enums/form.enum';
 import { IFormStyleConfig } from 'src/app/interfaces/form.interface';
 import { TFormStyleActions } from '../actions/form.actions';
 
 export const initialState: IFormStyleConfig = {
-  label: '',
-  color: '',
-  backgroundColor: '',
-  borderStyle: '',
-  borderColor: '',
+  ...CInitFormConfiguration
 };
 
 export const formStyleReducer = (
