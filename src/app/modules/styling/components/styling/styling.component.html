@@ -1,0 +1,31 @@
+<mat-accordion>
+  <mat-expansion-panel
+    hideToggle
+    (opened)="togglePanel('form')"
+    (closed)="togglePanel('form')"
+    class="borderLight"
+  >
+    <mat-expansion-panel-header>
+      <mat-panel-title> Form General Styles </mat-panel-title>
+      <mat-panel-description>{{
+        formStylePanelState | panelState
+      }}</mat-panel-description>
+    </mat-expansion-panel-header>
+    <app-form-styles></app-form-styles>
+  </mat-expansion-panel>
+
+  <mat-expansion-panel
+    hideToggle
+    (opened)="togglePanel('field')"
+    (closed)="togglePanel('field')"
+    class="borderLight"
+  >
+    <mat-expansion-panel-header>
+      <mat-panel-title> Field Styles </mat-panel-title>
+      <mat-panel-description>{{
+        fieldStylePanelState | panelState
+      }}</mat-panel-description>
+    </mat-expansion-panel-header>
+    <app-field-styles></app-field-styles>
+  </mat-expansion-panel>
+</mat-accordion>
