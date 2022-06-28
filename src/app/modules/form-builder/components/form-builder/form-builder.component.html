@@ -13,7 +13,7 @@
     (cdkDropListDropped)="onDrop($event)"
     #items
   >
-    <div
+    <form
       class="field"
       *ngFor="let field of fieldsInfoArr; let i = index"
       [ngSwitch]="field.type"
@@ -23,25 +23,31 @@
       <app-custom-input
         *ngSwitchCase="FIELDS.Input"
         [configs]="field.style"
+        [formControl]="form.controls[field.key]"
       ></app-custom-input>
+
       <app-custom-textarea
         [configs]="field.style"
         *ngSwitchCase="FIELDS.Textarea"
+        [formControl]="form.controls[field.key]"
       ></app-custom-textarea>
       <app-custom-select
         *ngSwitchCase="FIELDS.Select"
         [configs]="field.style"
+        [formControl]="form.controls[field.key]"
       ></app-custom-select>
       <app-custom-button
         [configs]="field.style"
         [width]="'50%'"
         *ngSwitchCase="FIELDS.Button"
+        [formControl]="form.controls[field.key]"
       ></app-custom-button>
       <app-custom-checkbox
         [configs]="field.style"
         *ngSwitchCase="FIELDS.Checkbox"
+        [formControl]="form.controls[field.key]"
       ></app-custom-checkbox>
-    </div>
+    </form>
   </div>
 </div>
 
@@ -49,4 +55,5 @@
   [width]="'50%'"
   [buttonText]="'Save form'"
   (click)="saveForm()"
+  [disabled]="!form.valid"
 ></app-custom-button>

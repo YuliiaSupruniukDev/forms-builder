@@ -47,38 +47,31 @@ export class FieldStylesComponent implements OnInit {
   }
 
   initForm(): void {
+    console.log("this.pickedField?.style.isRequired",
+      this.pickedField?.style.isRequired)
     this.form = this.formBuilder.group({
       label: this.formBuilder.control(this.pickedField?.style.label, [
-        Validators.required,
         Validators.minLength(1),
       ]),
-      width: this.formBuilder.control(this.pickedField?.style.width, [
-        Validators.required,
-      ]),
-      height: this.formBuilder.control(this.pickedField?.style.height, [
-        Validators.required,
-      ]),
-      fontSize: this.formBuilder.control(this.pickedField?.style.fontSize, [
-        Validators.required,
-      ]),
+      width: this.formBuilder.control(this.pickedField?.style.width, []),
+      height: this.formBuilder.control(this.pickedField?.style.height, []),
+      fontSize: this.formBuilder.control(this.pickedField?.style.fontSize, []),
       fontWeight: this.formBuilder.control(
-        this.pickedField?.style.fontWeight.toString(),
-        [Validators.required]
+        this.pickedField?.style.fontWeight.toString()
       ),
       color: this.formBuilder.control(this.pickedField?.style.color, [
-        Validators.required,
         Validators.pattern(this.rgbPattern),
       ]),
-      borderStyle: this.formBuilder.control(this.pickedField?.style.borderStyle, [
-        Validators.required,
-      ]),
+      borderStyle: this.formBuilder.control(
+        this.pickedField?.style.borderStyle,
+        []
+      ),
       isRequired: this.formBuilder.control(
         this.pickedField?.style.isRequired,
         []
       ),
       placeholder: this.formBuilder.control(
-        this.pickedField?.style.placeholder,
-        this.hasPlaceholder() ? Validators.required : []
+        this.pickedField?.style.placeholder
       ),
       items: this.formBuilder.control(
         this.pickedField?.style.items,
@@ -88,15 +81,15 @@ export class FieldStylesComponent implements OnInit {
   }
 
   hasOptions(): boolean {
-    return (
-      this.pickedField?.type ? [EFields.Checkbox, EFields.Select].indexOf(this.pickedField.type) > -1 : false
-    );
+    return this.pickedField?.type
+      ? [EFields.Checkbox, EFields.Select].indexOf(this.pickedField.type) > -1
+      : false;
   }
 
   hasPlaceholder(): boolean {
-    return (
-      this.pickedField?.type ? [EFields.Input, EFields.Textarea].indexOf(this.pickedField?.type) > -1 : false
-    );
+    return this.pickedField?.type
+      ? [EFields.Input, EFields.Textarea].indexOf(this.pickedField?.type) > -1
+      : false;
   }
 
   addOption(): void {
@@ -112,10 +105,12 @@ export class FieldStylesComponent implements OnInit {
       isRequired: formData.isRequired ? true : false,
     };
 
+    console.log(styleConfigs.isRequired)
+
     this.pickedField = {
       ...this.pickedField,
       style: styleConfigs,
-    } as IElement ;
+    } as IElement;
 
     this.store.dispatch(setFieldStyle({ updatedField: this.pickedField }));
   }

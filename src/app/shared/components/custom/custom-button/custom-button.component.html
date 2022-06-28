@@ -7,6 +7,7 @@
   [style.color]="'rgb' + configs.color"
   [style.borderStyle]="configs.borderStyle"
   [disabled]="disabled"
+  (click)="click()"
 >
   {{ buttonText || configs.label }}
 </button>

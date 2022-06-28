@@ -5,6 +5,12 @@ import {
   Renderer2,
   ViewChild,
 } from '@angular/core';
+import {
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
 
 import { CInitFormConfiguration } from 'src/app/constants/formConfigsInitial.constants';
 import { CdkDragDrop } from '@angular/cdk/drag-drop';
@@ -26,10 +32,12 @@ import { selectFormStyle } from 'src/app/state/selectors/form.selectors';
 export class FormBuilderComponent implements OnInit {
   formStyle$ = this.store.select(selectFormStyle);
   fieldStyles$ = this.store.select(selectFieldsStyle);
+  form: FormGroup = new FormGroup({});
 
   subs: Subscription[] = [];
 
   currentElement: ElementRef;
+  currentElementKey: string;
   FIELDS = EFields;
 
   fieldsList: string[] = [];
@@ -42,30 +50,14 @@ export class FormBuilderComponent implements OnInit {
     private dragAndDropService: DragAndDropService,
     private fieldTransferService: FieldTransferService,
     private store: Store,
-    private renderer: Renderer2
+    private renderer: Renderer2,
+    private formBuilder: FormBuilder
   ) {}
 
   ngOnInit(): void {
     this.observeFieldStyle();
     this.observeFormStyle();
-  }
-
-  observeFieldStyle(): void {
-    const fieldStylesSubscription = this.fieldStyles$.subscribe(
-      (fields: IElement[]) => {
-        this.fieldsInfoArr = [...fields];
-      }
-    );
-
-    this.subs.push(fieldStylesSubscription);
-  }
-
-  observeFormStyle(): void {
-    const formStyleSubscription = this.formStyle$.subscribe((val) => {
-      this.configs = val;
-    });
-
-    this.subs.push(formStyleSubscription);
+    this.observeDeletedFields();
   }
 
   onDrop(event: CdkDragDrop<string[]>): void {
@@ -75,19 +67,38 @@ export class FormBuilderComponent implements OnInit {
     );
 
     this.initFormFields();
+    this.addNewControl(this.dragAndDropService.newItem);
   }
 
   initFormFields(): void {
     this.fieldTransferService.fildsList = this.fieldsInfoArr;
   }
 
-  pickField(field: IElement): void {
-    this.fieldTransferService.pickedField = field;
+  addNewControl(field: IElement) {
+    const isRequired = field.style.isRequired;
+    console.log(isRequired);
+    this.form.addControl(
+      field.key,
+      this.formBuilder.control('', isRequired ? Validators.required : [])
+    );
+  }
 
+  changeValidation(field: IElement) {
+    this.form.controls[field.key].setValidators(
+      field.style.isRequired ? Validators.required : []
+    );
+
+    console.log(field.style.isRequired)
+  }
+
+  pickField(field: IElement): void {
     if (this.currentElement) this.unpickPreviousField();
     const id = this.fieldsInfoArr.indexOf(field);
     this.currentElement = this.items.nativeElement.children[id];
+    this.currentElementKey = field.key;
     this.renderer.addClass(this.currentElement, 'active');
+
+    this.fieldTransferService.pickedField = field;
   }
 
   unpickPreviousField(): void {
@@ -96,7 +107,44 @@ export class FormBuilderComponent implements OnInit {
 
   saveForm() {
     alert('Form saved!');
-    console.log(this.fieldsInfoArr);
+    console.log(this.form.value);
+  }
+
+  deleteControl(key: string): void {
+    this.form.removeControl(key);
+  }
+
+  observeFieldStyle(): void {
+    const fieldStylesSubscription = this.fieldStyles$.subscribe(
+      (fields: IElement[]) => {
+        this.fieldsInfoArr = [...fields];
+
+        if (this.currentElementKey) {
+          const current = this.fieldsInfoArr.filter(
+            (field) => field.key === this.currentElementKey
+          )[0];
+          this.changeValidation(current);
+        }
+      }
+    );
+    this.subs.push(fieldStylesSubscription);
+  }
+
+  observeFormStyle(): void {
+    const formStyleSubscription = this.formStyle$.subscribe((value) => {
+      this.configs = value;
+    });
+
+    this.subs.push(formStyleSubscription);
+  }
+
+  observeDeletedFields(): void {
+    const fieldDeletionSubsctiption =
+      this.fieldTransferService.deletedField.subscribe((fieldKey: string) => {
+        this.deleteControl(fieldKey);
+      });
+
+    this.subs.push(fieldDeletionSubsctiption);
   }
 
   onDestroy() {

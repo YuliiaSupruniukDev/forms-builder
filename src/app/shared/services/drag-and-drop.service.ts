@@ -10,6 +10,8 @@ import { v4 as uuid } from 'uuid';
   providedIn: 'root',
 })
 export class DragAndDropService {
+  newItem: IElement;
+
   constructor(private styleService: StyleService) {}
 
   public drop(
@@ -42,6 +44,8 @@ export class DragAndDropService {
       type,
       style: this.styleService.getInitialStyle(type),
     };
+
+    this.newItem = newField;
 
     elementsArr.splice(id, 0, newField);
     return elementsArr;

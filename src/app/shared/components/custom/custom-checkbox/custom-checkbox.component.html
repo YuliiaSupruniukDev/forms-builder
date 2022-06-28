@@ -1,7 +1,11 @@
 <p class="title center">{{ configs.label }}</p>
 
-<div class="custom-checkbox">
+<div class="custom-checkbox" ngDefaultControl [ngModel]="value">
   <label *ngFor="let item of configs.items"
-    ><input type="checkbox" />{{ item }}</label
+    ><input type="checkbox" [value]="item" (change)="onCheckChange($event)" />{{
+      item
+    }}</label
   >
+
+
 </div>

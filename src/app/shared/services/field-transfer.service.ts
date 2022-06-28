@@ -10,6 +10,7 @@ import { setFields } from 'src/app/state/actions/field.actions';
 export class FieldTransferService {
   private field = new Subject<IElement | null>();
   private formFields: IElement[] = [];
+  private deleted$ = new Subject<string>();
 
   constructor(private store: Store) {}
 
@@ -26,7 +27,17 @@ export class FieldTransferService {
     this.store.dispatch(setFields({ fields: [...array] }));
   }
 
+  set deletedField(key: string) {
+    this.deleted$.next(key);
+  }
+
+  get deletedField(): any {
+    return this.deleted$;
+  }
+
   deleteFormField(key: string) {
+    this.deletedField = key;
+    this.pickedField = null;
     this.fildsList = this.formFields.filter((field) => field.key !== key);
   }
 }
