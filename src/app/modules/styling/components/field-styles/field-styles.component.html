@@ -1,7 +1,7 @@
 <div *ngIf="pickedField">
   <form [formGroup]="form">
     <h3 *ngIf="pickedField">
-      {{ pickedField.type + " " + pickedField.index }}
+      {{ pickedField.type + " " + pickedField.key }}
       <!-- temp -->
     </h3>
     <app-input
@@ -53,7 +53,7 @@
         (click)="submit()"
         [disabled]="!form.valid"
       ></app-custom-button>
-      <app-custom-button [buttonText]="'Delete'"></app-custom-button>
+      <app-custom-button [buttonText]="'Delete'" (click)="deleteField()"></app-custom-button>
     </div>
   </form>
 

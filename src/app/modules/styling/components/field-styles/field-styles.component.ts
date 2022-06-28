@@ -1,9 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {
-  FormBuilder,
-  FormGroup,
-  Validators,
-} from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { CFormGeneralStyle } from '../../form-general-style.constant';
 import { CrgbPattern } from 'src/app/constants/patterns.constant';
@@ -39,7 +35,6 @@ export class FieldStylesComponent implements OnInit {
 
   ngOnInit(): void {
     this.onFieldChange();
-    this.initForm();
   }
 
   getFieldStyle(key: string): void {
@@ -55,36 +50,37 @@ export class FieldStylesComponent implements OnInit {
 
   initForm(): void {
     this.form = this.formBuilder.group({
-      label: this.formBuilder.control(this.pickedField.style?.label, [
+      label: this.formBuilder.control(this.pickedField.style.label, [
         Validators.required,
         Validators.minLength(1),
       ]),
-      width: this.formBuilder.control(this.pickedField.style?.width, [
+      width: this.formBuilder.control(this.pickedField.style.width, [
         Validators.required,
       ]),
-      height: this.formBuilder.control(this.pickedField.style?.height, [
+      height: this.formBuilder.control(this.pickedField.style.height, [
         Validators.required,
       ]),
-      fontSize: this.formBuilder.control(this.pickedField.style?.fontSize, [
+      fontSize: this.formBuilder.control(this.pickedField.style.fontSize, [
         Validators.required,
       ]),
-      fontWeight: this.formBuilder.control(this.pickedField.style?.fontWeight, [
-        Validators.required,
-      ]),
-      color: this.formBuilder.control(this.pickedField.style?.color, [
+      fontWeight: this.formBuilder.control(
+        this.pickedField.style.fontWeight.toString(),
+        [Validators.required]
+      ),
+      color: this.formBuilder.control(this.pickedField.style.color, [
         Validators.required,
         Validators.pattern(this.rgbPattern),
       ]),
       borderType: this.formBuilder.control(
-        this.pickedField.style?.borderStyle,
+        this.pickedField.style.borderStyle,
         [Validators.required]
       ),
       isRequired: this.formBuilder.control(
-        this.pickedField.style?.isRequired,
+        this.pickedField.style.isRequired,
         []
       ),
       items: this.formBuilder.control(
-        this.pickedField.style?.items,
+        this.pickedField.style.items,
         this.hasOptions() ? Validators.required : []
       ),
     });
@@ -107,7 +103,7 @@ export class FieldStylesComponent implements OnInit {
   }
 
   addOption(): void {
-    const options = [...this.form.value.items || [], this.option];
+    const options = [...(this.form.value.items || []), this.option];
     this.form.get('items')?.setValue(options);
     this.option = '';
   }
@@ -124,8 +120,12 @@ export class FieldStylesComponent implements OnInit {
       style: styleConfigs,
     };
 
-    this.form.reset()
+    this.form.reset();
     this.store.dispatch(setFieldStyle({ updatedField: this.pickedField }));
+  }
+
+  deleteField(): void {
+    this.fieldTransferService.deleteFormField(this.pickedField.key);
   }
 
   onDestroy(): void {

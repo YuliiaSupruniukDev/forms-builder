@@ -1,5 +1,7 @@
 import { EAppearance, EBorderStyle, EWidthUnit } from '../enums/style.enums';
 
+import { EFields } from '../enums/fields.enum';
+
 export const CCustomInputConfiguration = {
   label: '',
   placeholder: 'Input label',
@@ -32,6 +34,14 @@ export const CCustomSelectConfiguration = {
 export const CCustomCheckboxConfiguration = {
   ...CCustomInputConfiguration,
   label: 'Checkbox label',
+};
+
+export const CInitialStyle = {
+  [EFields.Input]: CCustomInputConfiguration,
+  [EFields.Select]: CCustomSelectConfiguration,
+  [EFields.Button]: CCustomButtonConfiguration,
+  [EFields.Checkbox]: CCustomCheckboxConfiguration,
+  [EFields.Textarea]: CCustomTextareaConfiguration,
 };
 
 export const CInputConfiguration = {
