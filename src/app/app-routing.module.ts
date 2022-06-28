@@ -11,7 +11,7 @@ const routes: Routes = [
   {
     path: 'login',
     loadChildren: () =>
-      import('src/app/pages/auth/auth-routing.module').then((m) => m.AuthRoutingModule),
+      import('src/app/pages/auth/auth.module').then((m) => m.AuthModule),
   },
 ];
 
