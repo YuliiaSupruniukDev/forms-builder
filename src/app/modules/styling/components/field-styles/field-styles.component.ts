@@ -47,7 +47,6 @@ export class FieldStylesComponent implements OnInit {
   }
 
   initForm(): void {
-      this.pickedField?.style.isRequired)
     this.form = this.formBuilder.group({
       label: this.formBuilder.control(this.pickedField?.style.label, [
         Validators.minLength(1),
