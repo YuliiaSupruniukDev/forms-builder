@@ -1,6 +1,13 @@
-<p class="title center">{{ configs.label }}</p>
+<div
+  class="custom-checkbox"
+  ngDefaultControl
+  [ngModel]="value"
+  [style.fontSize.px]="configs.fontSize"
+  [style.fontWeight]="configs.fontWeight"
+  [style.color]="'rgb' + configs.color"
+>
+  <p class="title center">{{ configs.label }}</p>
 
-<div class="custom-checkbox" ngDefaultControl [ngModel]="value">
   <label *ngFor="let item of configs.items"
     ><input type="checkbox" [value]="item" (change)="onCheckChange($event)" />{{
       item
