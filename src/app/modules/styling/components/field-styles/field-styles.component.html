@@ -1,4 +1,4 @@
-<div *ngIf="pickedField">
+<div *ngIf="form">
   <form [formGroup]="form">
     <h3 *ngIf="pickedField">
       {{ pickedField.type + " " + pickedField.key }}
@@ -6,40 +6,40 @@
     </h3>
     <app-input
       [configs]="generalStyle.label"
-      formControlName="label"
+      [formControl]="form.controls['label']"
     ></app-input>
 
     <div class="flex">
       <app-input
         [configs]="generalStyle.width"
-        formControlName="width"
+        [formControl]="form.controls['width']"
       ></app-input>
       <app-input
         [configs]="generalStyle.height"
-        formControlName="height"
+        [formControl]="form.controls['height']"
       ></app-input>
     </div>
 
     <div class="flex">
       <app-input
         [configs]="generalStyle.fontSize"
-        formControlName="fontSize"
+        [formControl]="form.controls['fontSize']"
       ></app-input>
 
       <app-select
         [configs]="generalStyle.fontWeight"
-        formControlName="fontWeight"
+        [formControl]="form.controls['fontWeight']"
       ></app-select>
     </div>
 
     <div class="flex">
       <app-input
         [configs]="generalStyle.color"
-        formControlName="color"
+        [formControl]="form.controls['color']"
       ></app-input>
       <app-select
         [configs]="generalStyle.borderType"
-        formControlName="borderType"
+        [formControl]="form.controls['borderType']"
       ></app-select>
     </div>
 
@@ -53,7 +53,10 @@
         (click)="submit()"
         [disabled]="!form.valid"
       ></app-custom-button>
-      <app-custom-button [buttonText]="'Delete'" (click)="deleteField()"></app-custom-button>
+      <app-custom-button
+        [buttonText]="'Delete'"
+        (click)="deleteField()"
+      ></app-custom-button>
     </div>
   </form>
 

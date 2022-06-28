@@ -9,7 +9,6 @@ import { IElement } from 'src/app/interfaces/element.interface';
 import { Store } from '@ngrx/store';
 import { Subscription } from 'rxjs';
 import { TCustomField } from 'src/app/interfaces/fields.interfaces';
-import { getFieldByKey } from 'src/app/state/selectors/fields.selectors';
 import { setFieldStyle } from 'src/app/state/actions/field.actions';
 
 @Component({
@@ -37,63 +36,45 @@ export class FieldStylesComponent implements OnInit {
     this.onFieldChange();
   }
 
-  getFieldStyle(key: string): void {
-    const fieldStyleChangeSubscription = this.store
-      .select(getFieldByKey, key)
-      .subscribe((value) => {
-        this.pickedField = value;
-        this.initForm();
-      });
-
-    this.subs.push(fieldStyleChangeSubscription);
-  }
-
-  initForm(): void {
-    this.form = this.formBuilder.group({
-      label: this.formBuilder.control(this.pickedField.style.label, [
-        Validators.required,
-        Validators.minLength(1),
-      ]),
-      width: this.formBuilder.control(this.pickedField.style.width, [
-        Validators.required,
-      ]),
-      height: this.formBuilder.control(this.pickedField.style.height, [
-        Validators.required,
-      ]),
-      fontSize: this.formBuilder.control(this.pickedField.style.fontSize, [
-        Validators.required,
-      ]),
-      fontWeight: this.formBuilder.control(
-        this.pickedField.style.fontWeight.toString(),
-        [Validators.required]
-      ),
-      color: this.formBuilder.control(this.pickedField.style.color, [
-        Validators.required,
-        Validators.pattern(this.rgbPattern),
-      ]),
-      borderType: this.formBuilder.control(
-        this.pickedField.style.borderStyle,
-        [Validators.required]
-      ),
-      isRequired: this.formBuilder.control(
-        this.pickedField.style.isRequired,
-        []
-      ),
-      items: this.formBuilder.control(
-        this.pickedField.style.items,
-        this.hasOptions() ? Validators.required : []
-      ),
-    });
-  }
-
   onFieldChange(): void {
     const pickedFieldSubscription =
       this.fieldTransferService.pickedField.subscribe((value: IElement) => {
-        if (this.form) this.form.reset();
-        this.getFieldStyle(value.key);
+        this.pickedField = value;
+        this.initForm(value.style);
       });
 
     this.subs.push(pickedFieldSubscription);
+  }
+
+  initForm(vals: any): void {
+    this.form = this.formBuilder.group({
+      label: this.formBuilder.control(vals.label, [
+        Validators.required,
+        Validators.minLength(1),
+      ]),
+      width: this.formBuilder.control(vals.width, [Validators.required]),
+      height: this.formBuilder.control(vals.height, [
+        Validators.required,
+      ]),
+      fontSize: this.formBuilder.control(vals.fontSize, [
+        Validators.required,
+      ]),
+      fontWeight: this.formBuilder.control(vals.fontWeight.toString(), [
+        Validators.required,
+      ]),
+      color: this.formBuilder.control(vals.color, [
+        Validators.required,
+        Validators.pattern(this.rgbPattern),
+      ]),
+      borderType: this.formBuilder.control(vals.borderStyle, [
+        Validators.required,
+      ]),
+      isRequired: this.formBuilder.control(vals.isRequired, []),
+      items: this.formBuilder.control(
+        vals.items,
+        this.hasOptions() ? Validators.required : []
+      ),
+    });
   }
 
   hasOptions(): boolean {
@@ -134,3 +115,16 @@ export class FieldStylesComponent implements OnInit {
     });
   }
 }
+
+/*
+  getFieldStyle(key: string): void {
+    const fieldStyleChangeSubscription = this.store
+      .select(getFieldByKey(key))
+      .subscribe((value) => {
+        this.pickedField = value;
+        this.initForm(value);
+      });
+
+    this.subs.push(fieldStyleChangeSubscription);
+  }
+*/

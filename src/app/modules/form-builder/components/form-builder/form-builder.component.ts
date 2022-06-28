@@ -1,7 +1,6 @@
 import {
   Component,
   ElementRef,
-  Input,
   OnInit,
   Renderer2,
   ViewChild,
@@ -63,12 +62,12 @@ export class FormBuilderComponent implements OnInit {
   }
 
   pickField(field: IElement): void {
+    this.fieldTransferService.pickedField = field;
+
     if (this.currentElement) this.unpickPreviousField();
     const id = this.fieldsInfoArr.indexOf(field);
     this.currentElement = this.items.nativeElement.children[id];
     this.renderer.addClass(this.currentElement, 'active');
-
-    this.fieldTransferService.pickedField = field;
   }
 
   unpickPreviousField(): void {
