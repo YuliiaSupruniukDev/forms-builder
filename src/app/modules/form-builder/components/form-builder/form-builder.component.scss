@@ -1,0 +1,34 @@
+@import "../../../../../styles/unary";
+
+.section {
+  padding: 14px 0px;
+}
+
+.field {
+  padding: 14px 24px;
+  cursor: pointer;
+  position: relative;
+}
+
+.form-fields {
+  min-height: 5px;
+}
+
+.active::after {
+  content: "";
+  display: block;
+  position: absolute;
+
+  top: 0;
+  left: 0px;
+  height: 100%;
+  width: 100%;
+
+  z-index: -1;
+  @include selected();
+}
+
+.field:hover,
+.cdk-drag-preview {
+  @include selected();
+}

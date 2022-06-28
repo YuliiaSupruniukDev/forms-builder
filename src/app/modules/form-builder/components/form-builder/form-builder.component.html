@@ -1,0 +1,59 @@
+<div
+  class="section"
+  [style.backgroundColor]="'rgb' + configs.backgroundColor"
+  [style.color]="'rgb' + configs.color"
+  [style.borderStyle]="configs.borderStyle"
+  [style.borderColor]="'rgb' + configs.borderColor"
+>
+  <h3 class="center title">{{ configs.label }}</h3>
+  <div
+    class="form-fields"
+    cdkDropList
+    [cdkDropListData]="fieldsList"
+    (cdkDropListDropped)="onDrop($event)"
+    #items
+  >
+    <form
+      class="field"
+      *ngFor="let field of fieldsInfoArr; let i = index"
+      [ngSwitch]="field.type"
+      (click)="pickField(field)"
+      cdkDrag
+    >
+      <app-custom-input
+        *ngSwitchCase="FIELDS.Input"
+        [configs]="field.style"
+        [formControl]="form.controls[field.key]"
+      ></app-custom-input>
+
+      <app-custom-textarea
+        [configs]="field.style"
+        *ngSwitchCase="FIELDS.Textarea"
+        [formControl]="form.controls[field.key]"
+      ></app-custom-textarea>
+      <app-custom-select
+        *ngSwitchCase="FIELDS.Select"
+        [configs]="field.style"
+        [formControl]="form.controls[field.key]"
+      ></app-custom-select>
+      <app-custom-button
+        [configs]="field.style"
+        [width]="'50%'"
+        *ngSwitchCase="FIELDS.Button"
+        [formControl]="form.controls[field.key]"
+      ></app-custom-button>
+      <app-custom-checkbox
+        [configs]="field.style"
+        *ngSwitchCase="FIELDS.Checkbox"
+        [formControl]="form.controls[field.key]"
+      ></app-custom-checkbox>
+    </form>
+  </div>
+</div>
+
+<app-custom-button
+  [width]="'50%'"
+  [buttonText]="'Save form'"
+  (click)="saveForm()"
+  [disabled]="!form.valid"
+></app-custom-button>
