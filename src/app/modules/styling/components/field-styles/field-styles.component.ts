@@ -40,38 +40,38 @@ export class FieldStylesComponent implements OnInit {
     const pickedFieldSubscription =
       this.fieldTransferService.pickedField.subscribe((value: IElement) => {
         this.pickedField = value;
-        this.initForm(value.style);
+        this.initForm();
       });
 
     this.subs.push(pickedFieldSubscription);
   }
 
-  initForm(vals: any): void {
+  initForm(): void {
     this.form = this.formBuilder.group({
-      label: this.formBuilder.control(vals.label, [
+      label: this.formBuilder.control(this.pickedField.style.label, [
         Validators.required,
         Validators.minLength(1),
       ]),
-      width: this.formBuilder.control(vals.width, [Validators.required]),
-      height: this.formBuilder.control(vals.height, [
+      width: this.formBuilder.control(this.pickedField.style.width, [Validators.required]),
+      height: this.formBuilder.control(this.pickedField.style.height, [
         Validators.required,
       ]),
-      fontSize: this.formBuilder.control(vals.fontSize, [
+      fontSize: this.formBuilder.control(this.pickedField.style.fontSize, [
         Validators.required,
       ]),
-      fontWeight: this.formBuilder.control(vals.fontWeight.toString(), [
+      fontWeight: this.formBuilder.control(this.pickedField.style.fontWeight.toString(), [
         Validators.required,
       ]),
-      color: this.formBuilder.control(vals.color, [
+      color: this.formBuilder.control(this.pickedField.style.color, [
         Validators.required,
         Validators.pattern(this.rgbPattern),
       ]),
-      borderType: this.formBuilder.control(vals.borderStyle, [
+      borderType: this.formBuilder.control(this.pickedField.style.borderStyle, [
         Validators.required,
       ]),
-      isRequired: this.formBuilder.control(vals.isRequired, []),
+      isRequired: this.formBuilder.control(this.pickedField.style.isRequired, []),
       items: this.formBuilder.control(
-        vals.items,
+        this.pickedField.style.items,
         this.hasOptions() ? Validators.required : []
       ),
     });
@@ -101,7 +101,6 @@ export class FieldStylesComponent implements OnInit {
       style: styleConfigs,
     };
 
-    this.form.reset();
     this.store.dispatch(setFieldStyle({ updatedField: this.pickedField }));
   }
 
@@ -115,16 +114,3 @@ export class FieldStylesComponent implements OnInit {
     });
   }
 }
-
-/*
-  getFieldStyle(key: string): void {
-    const fieldStyleChangeSubscription = this.store
-      .select(getFieldByKey(key))
-      .subscribe((value) => {
-        this.pickedField = value;
-        this.initForm(value);
-      });
-
-    this.subs.push(fieldStyleChangeSubscription);
-  }
-*/

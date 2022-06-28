@@ -5,11 +5,11 @@ import { EFields } from '../enums/fields.enum';
 export const CCustomInputConfiguration = {
   label: '',
   placeholder: 'Input label',
-  width: '-webkit-fill-available',
+  width: '',
   height: 'auto',
-  fontSize: '14px',
+  fontSize: '14',
   fontWeight: 400,
-  color: 'black',
+  color: '(0,0,0)',
   borderStyle: EBorderStyle.Solid,
   isRequired: true,
 };
