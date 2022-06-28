@@ -10,7 +10,12 @@
   clickAfterChange
   [(ngModel)]="value"
 >
-  <option selected disabled value="configs.placeholder">
-    {{ configs.placeholder }}
+  <option selected disabled>Choose option</option>
+  <option
+    value="configs.placeholder"
+    *ngFor="let item of configs.items"
+    [value]="item"
+  >
+    {{ item }}
   </option>
 </select>

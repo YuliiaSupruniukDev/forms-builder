@@ -12,17 +12,27 @@
       *ngFor="let field of fieldsInfoArr; let i = index"
       [ngSwitch]="field.type"
       (click)="pickField(field)"
+      cdkDrag
     >
-      <app-custom-input *ngSwitchCase="FIELDS.Input" [configs]="field.style"></app-custom-input>
+      <app-custom-input
+        *ngSwitchCase="FIELDS.Input"
+        [configs]="field.style"
+      ></app-custom-input>
       <app-custom-textarea
+        [configs]="field.style"
         *ngSwitchCase="FIELDS.Textarea"
       ></app-custom-textarea>
-      <app-custom-select *ngSwitchCase="FIELDS.Select"></app-custom-select>
+      <app-custom-select
+        *ngSwitchCase="FIELDS.Select"
+        [configs]="field.style"
+      ></app-custom-select>
       <app-custom-button
+        [configs]="field.style"
         [width]="'50%'"
         *ngSwitchCase="FIELDS.Button"
       ></app-custom-button>
       <app-custom-checkbox
+        [configs]="field.style"
         *ngSwitchCase="FIELDS.Checkbox"
       ></app-custom-checkbox>
     </div>

@@ -1,4 +1,5 @@
-import { CdkDragDrop } from '@angular/cdk/drag-drop';
+import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
+
 import { EFields } from 'src/app/enums/fields.enum';
 import { IElement } from 'src/app/interfaces/element.interface';
 import { Injectable } from '@angular/core';
@@ -15,10 +16,19 @@ export class DragAndDropService {
     event: CdkDragDrop<string[]>,
     elementsArr: IElement[]
   ): IElement[] {
-    let item: string = event.previousContainer.data[event.previousIndex];
-    event.container.data.splice(event.currentIndex, 0, item);
+    if (event.previousContainer !== event.container) {
+      const item: string = event.previousContainer.data[event.previousIndex];
+      event.container.data.splice(event.currentIndex, 0, item);
+      return this.setElementsArray(event.currentIndex, item, elementsArr);
+    }
 
-    return this.setElementsArray(event.currentIndex, item, elementsArr);
+    moveItemInArray(
+      event.container.data,
+      event.previousIndex,
+      event.currentIndex
+    );
+
+    return elementsArr;
   }
 
   setElementsArray(
