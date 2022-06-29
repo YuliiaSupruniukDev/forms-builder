@@ -24,24 +24,28 @@
         *ngSwitchCase="FIELDS.Input"
         [configs]="field.style"
         [formControl]="form.controls[field.key]"
+        [error]="getErrorMessage(field)"
       ></app-custom-input>
 
       <app-custom-textarea
         [configs]="field.style"
         *ngSwitchCase="FIELDS.Textarea"
         [formControl]="form.controls[field.key]"
+        [error]="getErrorMessage(field)"
       ></app-custom-textarea>
 
       <app-custom-select
         *ngSwitchCase="FIELDS.Select"
         [configs]="field.style"
         [formControl]="form.controls[field.key]"
+        [error]="getErrorMessage(field)"
       ></app-custom-select>
 
       <div class="btn" *ngSwitchCase="FIELDS.Button">
         <app-custom-button
           [configs]="field.style"
           [formControl]="form.controls[field.key]"
+          [error]="getErrorMessage(field)"
         ></app-custom-button>
       </div>
 
@@ -49,6 +53,7 @@
         [configs]="field.style"
         *ngSwitchCase="FIELDS.Checkbox"
         [formControl]="form.controls[field.key]"
+        [error]="getErrorMessage(field)"
       ></app-custom-checkbox>
     </form>
   </div>
