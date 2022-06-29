@@ -13,6 +13,11 @@ const routes: Routes = [
     loadChildren: () =>
       import('src/app/pages/auth/auth.module').then((m) => m.AuthModule),
   },
+  {
+    path: '**',
+    loadChildren: () =>
+      import('src/app/pages/main/main.module').then((m) => m.MainModule),
+  },
 ];
 
 @NgModule({

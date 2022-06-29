@@ -36,12 +36,14 @@
         [configs]="field.style"
         [formControl]="form.controls[field.key]"
       ></app-custom-select>
-      <app-custom-button
-        [configs]="field.style"
-        [width]="'50%'"
-        *ngSwitchCase="FIELDS.Button"
-        [formControl]="form.controls[field.key]"
-      ></app-custom-button>
+
+      <div class="btn" *ngSwitchCase="FIELDS.Button">
+        <app-custom-button
+          [configs]="field.style"
+          [formControl]="form.controls[field.key]"
+        ></app-custom-button>
+      </div>
+
       <app-custom-checkbox
         [configs]="field.style"
         *ngSwitchCase="FIELDS.Checkbox"
@@ -51,9 +53,10 @@
   </div>
 </div>
 
-<app-custom-button
-  [width]="'50%'"
-  [buttonText]="'Save form'"
-  (click)="saveForm()"
-  [disabled]="!form.valid"
-></app-custom-button>
+<div class="btn">
+  <app-custom-button
+    buttonText="Save form"
+    (click)="saveForm()"
+    [disabled]="!form.valid"
+  ></app-custom-button>
+</div>

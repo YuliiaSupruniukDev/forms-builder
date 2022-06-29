@@ -18,10 +18,12 @@
   background-color: $btnBackground;
   padding: 8px 16px;
 
-  display: block;
-  margin: 0 auto;
-
   cursor: pointer;
+}
+
+.btn {
+  width: fit-content;
+  margin: 0 auto;
 }
 
 .custom-btn:active {

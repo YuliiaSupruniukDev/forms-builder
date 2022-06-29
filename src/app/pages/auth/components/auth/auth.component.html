@@ -2,12 +2,51 @@
   <mat-card class="center-div">
     <mat-card-title class="center">Login</mat-card-title>
     <mat-card-content>
-      <app-input [configs]="configs.email"></app-input>
-      <app-input [configs]="configs.password"></app-input>
+      <app-input
+        [configs]="configs.email"
+        [formControl]="authForm.controls['email']"
+        [error]="getErrorMessage('email')"
+      ></app-input>
+
+      <app-input
+        [configs]="configs.password"
+        [formControl]="authForm.controls['password']"
+        [error]="getErrorMessage('password')"
+      ></app-input>
     </mat-card-content>
+
     <mat-card-actions class="center">
-      <button mat-button [routerLink]="''">Sign in</button>
-      <button mat-button [routerLink]="''">Sign up</button>
+      <ng-template [cdkPortalOutlet]="templatePortal"> </ng-template>
     </mat-card-actions>
   </mat-card>
 </main>
+
+<ng-template #login>
+  <p>
+    Don't have account?
+    <a class="link" (click)="setRegisterTemplate()">Sign up</a>
+  </p>
+
+  <div class="btn">
+    <app-custom-button
+      (click)="signIn()"
+      [disabled]="authForm.invalid"
+      buttonText="Sign in"
+    ></app-custom-button>
+  </div>
+</ng-template>
+
+<ng-template #register>
+  <p>
+    Already have an account?
+    <a class="link" (click)="setLoginTemplate()">Sign in</a>
+  </p>
+
+  <div class="btn">
+    <app-custom-button
+      (click)="signUp()"
+      [disabled]="authForm.invalid"
+      buttonText="Sign up"
+    ></app-custom-button>
+  </div>
+</ng-template>
