@@ -17,7 +17,7 @@ import { SharedModule } from 'src/app/shared/modules/shared.module';
     ReactiveFormsModule,
     MaterialUIModule,
     SharedMatModule,
-    SharedModule,
+    SharedModule
   ],
   exports: [AuthComponent],
 })
