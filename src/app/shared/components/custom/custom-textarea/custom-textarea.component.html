@@ -11,3 +11,4 @@
   [required]="configs.isRequired"
   [(ngModel)]="value"
 ></textarea>
+<span *ngIf="error" class="error-span">{{ error }}</span>

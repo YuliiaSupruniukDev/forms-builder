@@ -23,6 +23,7 @@ export class CustomButtonComponent implements ControlValueAccessor {
   @Input() buttonText?: string;
   @Input() width?: string;
   @Input() disabled?: boolean = false;
+  @Input() error?: string = '';
 
   set value(val: any) {
     this.inputValue = val;

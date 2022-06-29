@@ -1,4 +1,6 @@
-<label class="label" [style.fontSize.px]="configs.fontSize">{{ configs.label }}</label>
+<label class="label" [style.fontSize.px]="configs.fontSize">{{
+  configs.label
+}}</label>
 <input
   class="custom-input"
   [placeholder]="configs.placeholder"
@@ -11,4 +13,4 @@
   [required]="configs.isRequired"
   [(ngModel)]="value"
 />
-<span>Hello</span>
+<span *ngIf="error" class="error-span">{{ error }}</span>

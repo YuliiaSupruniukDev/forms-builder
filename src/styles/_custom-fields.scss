@@ -8,6 +8,12 @@
   background-color: white;
 }
 
+.error-span {
+  padding-left: 16px;
+  color: red;
+  font-size: smaller;
+}
+
 .custom-input:focus {
   outline-color: $lightGray;
   outline-width: 1.5px;
