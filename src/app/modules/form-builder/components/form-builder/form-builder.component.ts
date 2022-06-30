@@ -89,17 +89,13 @@ export class FormBuilderComponent implements OnInit {
     this.form.controls[field.key].setValidators(
       field.style.isRequired ? Validators.required : []
     );
-
-    if (field.type === EFields.Checkbox) {
-      (<FormControl>this.form.controls[field.key]).patchValue('');
-    }
+    this.checkboxReset(field);
   }
 
   pickField(field: IElement): void {
     if (this.currentElement) this.unpickPreviousField();
     const id = this.fieldsInfoArr.indexOf(field);
     this.currentElement = this.items.nativeElement.children[id];
-    console.log(this.currentElement);
 
     this.currentElementKey = field.key;
     this.renderer.addClass(this.currentElement, 'active');
@@ -123,7 +119,6 @@ export class FormBuilderComponent implements OnInit {
   }
 
   observeFieldStyle(): void {
-    console.log(this.form.value);
     const fieldStylesSubscription = this.fieldStyles$.subscribe(
       (fields: IElement[]) => {
         this.fieldsInfoArr = [...fields];
@@ -132,6 +127,7 @@ export class FormBuilderComponent implements OnInit {
           const current = this.fieldsInfoArr.filter(
             (field) => field.key === this.currentElementKey
           )[0];
+
           this.changeValidation(current);
         }
       }
@@ -155,6 +151,12 @@ export class FormBuilderComponent implements OnInit {
       });
 
     this.subs.push(fieldDeletionSubsctiption);
+  }
+
+  checkboxReset(field: IElement) {
+    if (field.type === EFields.Checkbox) {
+      (<FormControl>this.form.controls[field.key]).patchValue('');
+    }
   }
 
   getErrorMessage(field: IElement): string {
