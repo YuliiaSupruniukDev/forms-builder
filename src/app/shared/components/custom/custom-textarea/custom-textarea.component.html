@@ -1,4 +1,9 @@
-<label>{{ configs.label }}</label>
+<label
+  *ngIf="configs.label"
+  class="label"
+  [style.fontSize.px]="configs.fontSize"
+  >{{ configs.label }}</label
+>
 <textarea
   class="textarea custom-input"
   [placeholder]="configs.placeholder"

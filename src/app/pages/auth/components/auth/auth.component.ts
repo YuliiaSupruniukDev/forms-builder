@@ -11,8 +11,8 @@ import { IAuthForm, IUser } from 'src/app/interfaces/user.interface';
 
 import { AuthService } from 'src/app/shared/services/auth/auth.service';
 import { CAuthFormGeneralStyle } from '../../auth-form.constant';
-import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
+import { SnackBarService } from 'src/app/shared/services/snack-bar.service';
 import { Subscription } from 'rxjs';
 import { TemplatePortal } from '@angular/cdk/portal';
 
@@ -37,7 +37,7 @@ export class AuthComponent implements OnInit, AfterViewInit {
     private viewContainerRef: ViewContainerRef,
     private formBuilder: FormBuilder,
     private authService: AuthService,
-    private snackBar: MatSnackBar,
+    private snackBar: SnackBarService,
     private router: Router
   ) {}
 
@@ -68,12 +68,12 @@ export class AuthComponent implements OnInit, AfterViewInit {
 
     // this messages usually come from server
     if (!this.checkExistance(data)) {
-      this.openSnackBar('User doesn`t exist!');
+      this.snackBar.openSnackBar('User doesn`t exist!');
       return;
     }
 
     if (!this.checkPassword(data)) {
-      this.openSnackBar('Wrong password!');
+      this.snackBar.openSnackBar('Wrong password!');
       return;
     }
     // ----------------------------------------
@@ -93,7 +93,7 @@ export class AuthComponent implements OnInit, AfterViewInit {
 
     if (this.checkExistance(data)) {
       this.authForm.reset();
-      this.openSnackBar('User already exists!');
+      this.snackBar.openSnackBar('User already exists!');
       return;
     }
 
@@ -102,7 +102,7 @@ export class AuthComponent implements OnInit, AfterViewInit {
       .subscribe((user: IUser) => {
         this.users.push(user);
         this.authForm.reset();
-        this.openSnackBar('User successfully registered');
+        this.snackBar.openSnackBar('User successfully registered');
       });
 
     this.subs.push(registerSubscription);
@@ -131,6 +131,7 @@ export class AuthComponent implements OnInit, AfterViewInit {
       this.loginTemplate,
       this.viewContainerRef
     );
+    this.authForm.reset();
   }
 
   setRegisterTemplate(): void {
@@ -138,17 +139,12 @@ export class AuthComponent implements OnInit, AfterViewInit {
       this.registerTemplate,
       this.viewContainerRef
     );
+    this.authForm.reset();
   }
 
   getErrorMessage(control: string): string {
     const field = this.authForm.controls[control];
     return field.touched && field.invalid ? 'Is invalid' : '';
-  }
-
-  openSnackBar(message: string): void {
-    this.snackBar.open(message, 'Close', {
-      duration: 2000,
-    });
   }
 
   onDestroy(): void {

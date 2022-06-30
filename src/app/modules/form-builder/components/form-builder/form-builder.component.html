@@ -6,14 +6,14 @@
   [style.borderColor]="'rgb' + configs.borderColor"
 >
   <h3 class="center title">{{ configs.label }}</h3>
-  <div
+  <form
     class="form-fields"
     cdkDropList
     [cdkDropListData]="fieldsList"
     (cdkDropListDropped)="onDrop($event)"
     #items
   >
-    <form
+    <div
       class="field"
       *ngFor="let field of fieldsInfoArr; let i = index"
       [ngSwitch]="field.type"
@@ -55,8 +55,8 @@
         [formControl]="form.controls[field.key]"
         [error]="getErrorMessage(field)"
       ></app-custom-checkbox>
-    </form>
-  </div>
+    </div>
+  </form>
 </div>
 
 <div class="btn">
