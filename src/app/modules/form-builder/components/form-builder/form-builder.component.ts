@@ -5,11 +5,7 @@ import {
   Renderer2,
   ViewChild,
 } from '@angular/core';
-import {
-  FormBuilder,
-  FormGroup,
-  Validators,
-} from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { CInitFormConfiguration } from 'src/app/constants/formConfigsInitial.constants';
 import { CdkDragDrop } from '@angular/cdk/drag-drop';
@@ -94,6 +90,8 @@ export class FormBuilderComponent implements OnInit {
     if (this.currentElement) this.unpickPreviousField();
     const id = this.fieldsInfoArr.indexOf(field);
     this.currentElement = this.items.nativeElement.children[id];
+    console.log(this.currentElement);
+
     this.currentElementKey = field.key;
     this.renderer.addClass(this.currentElement, 'active');
 

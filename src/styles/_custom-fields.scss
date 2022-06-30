@@ -11,6 +11,9 @@
   border-color: $lightGray;
   border-radius: 4px;
   background-color: white;
+
+  position: relative;
+  z-index: 1;
 }
 
 .error-span {
@@ -58,4 +61,12 @@
 .custom-checkbox label {
   display: flex;
   align-items: center;
+}
+
+.custom-checkbox,
+.label,
+.custom-input,
+.error-span {
+  position: relative;
+  z-index: 1;
 }
