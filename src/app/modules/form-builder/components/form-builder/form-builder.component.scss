@@ -27,8 +27,6 @@
   @include selected();
 }
 
-.field:hover,
-.cdk-drag-preview {
+.field:hover {
   @include selected();
 }
-
