@@ -5,7 +5,12 @@ import {
   Renderer2,
   ViewChild,
 } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import {
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
 
 import { CInitFormConfiguration } from 'src/app/constants/formConfigsInitial.constants';
 import { CdkDragDrop } from '@angular/cdk/drag-drop';
@@ -84,6 +89,10 @@ export class FormBuilderComponent implements OnInit {
     this.form.controls[field.key].setValidators(
       field.style.isRequired ? Validators.required : []
     );
+
+    if (field.type === EFields.Checkbox) {
+      (<FormControl>this.form.controls[field.key]).patchValue('');
+    }
   }
 
   pickField(field: IElement): void {
@@ -114,6 +123,7 @@ export class FormBuilderComponent implements OnInit {
   }
 
   observeFieldStyle(): void {
+    console.log(this.form.value);
     const fieldStylesSubscription = this.fieldStyles$.subscribe(
       (fields: IElement[]) => {
         this.fieldsInfoArr = [...fields];
@@ -122,7 +132,6 @@ export class FormBuilderComponent implements OnInit {
           const current = this.fieldsInfoArr.filter(
             (field) => field.key === this.currentElementKey
           )[0];
-
           this.changeValidation(current);
         }
       }
