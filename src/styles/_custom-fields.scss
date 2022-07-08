@@ -1,11 +1,29 @@
+.label {
+  display: block;
+  padding-bottom: 10px;
+}
+
 .custom-input {
   display: block;
   padding: 16px;
-  width: -webkit-fill-available;
   border-width: 1px;
   border-color: $lightGray;
   border-radius: 4px;
   background-color: white;
+
+  position: relative;
+  z-index: 1;
+
+  width: 100%;
+  width: -moz-available;
+  width: -webkit-fill-available;
+  width: stretch;
+}
+
+.error-span {
+  padding-left: 16px;
+  color: red;
+  font-size: smaller;
 }
 
 .custom-input:focus {
@@ -18,10 +36,12 @@
   background-color: $btnBackground;
   padding: 8px 16px;
 
-  display: block;
-  margin: 0 auto;
-
   cursor: pointer;
+}
+
+.btn {
+  width: fit-content;
+  margin: 0 auto;
 }
 
 .custom-btn:active {
@@ -45,4 +65,12 @@
 .custom-checkbox label {
   display: flex;
   align-items: center;
+}
+
+.custom-checkbox,
+.label,
+.custom-input,
+.error-span {
+  position: relative;
+  z-index: 1;
 }

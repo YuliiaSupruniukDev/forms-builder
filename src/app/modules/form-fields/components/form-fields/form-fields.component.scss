@@ -2,4 +2,5 @@
 
 .cdk-drag-preview {
   @include fieldItemShadow();
+  max-height: 20px;
 }

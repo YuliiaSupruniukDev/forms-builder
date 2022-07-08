@@ -3,9 +3,10 @@
   <pre>{{ data | json }}</pre>
 </div>
 <div mat-dialog-actions>
-  <app-custom-button
-    (click)="close()"
-    [buttonText]="'Close'"
-    width="40%"
-  ></app-custom-button>
+  <div class="btn">
+    <app-custom-button
+      (click)="close()"
+      [buttonText]="'Close'"
+    ></app-custom-button>
+  </div>
 </div>

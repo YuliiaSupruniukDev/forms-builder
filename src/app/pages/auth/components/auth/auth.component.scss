@@ -1,4 +1,40 @@
-.section {
+.mat-card {
+  width: 30%;
+}
+
+.mat-card-title {
+  margin-bottom: 20px;
+  font-family: "Diplomata SC", cursive;
+}
+
+.mat-form-field {
+  margin-bottom: 10px;
+}
+
+.btn {
+  padding: 10px 0px;
+}
+
+@media screen and (max-width: 1400px) {
+  .mat-card {
+    width: 40%;
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  .mat-card {
     width: 50%;
-    height: 50%;
+  }
+}
+
+@media screen and (max-width: 896px) {
+  .mat-card {
+    width: 60%;
+  }
+}
+
+@media screen and (max-width: 640px) {
+  .mat-card {
+    width: 85%;
+  }
 }

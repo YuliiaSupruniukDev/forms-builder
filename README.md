@@ -9,4 +9,7 @@
  git checkout develop
  npm install
  ng serve
+
+ // json web server
+ json-server --watch db/db.json
  ```   

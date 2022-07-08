@@ -1,6 +1,6 @@
 <button
   class="custom-input custom-btn"
-  [style.width.px]="configs.width"
+  [style.width]="width || configs.width + 'px'"
   [style.height.px]="configs.height"
   [style.fontSize.px]="configs.fontSize"
   [style.fontWeight]="configs.fontWeight"
@@ -11,3 +11,5 @@
 >
   {{ buttonText || configs.label }}
 </button>
+
+<span *ngIf="error" class="error-span">{{ error }}</span>

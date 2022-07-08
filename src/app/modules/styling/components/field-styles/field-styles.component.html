@@ -1,9 +1,8 @@
 <div *ngIf="pickedField">
   <form [formGroup]="form">
-    <h3 *ngIf="pickedField">
+    <!-- <h3 *ngIf="pickedField">
       {{ pickedField.type + " " + pickedField.key }}
-      <!-- temp -->
-    </h3>
+    </h3>-->
 
     <div class="flex" *ngIf="hasPlaceholder(); else withPlaceholder">
       <app-input
@@ -84,6 +83,7 @@
   <div *ngIf="hasOptions()">
     <div class="flex">
       <app-input
+        class="add-input"
         [configs]="generalStyle.inputSelect"
         [(ngModel)]="option"
       ></app-input>

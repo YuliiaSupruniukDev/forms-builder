@@ -6,14 +6,14 @@
   [style.borderColor]="'rgb' + configs.borderColor"
 >
   <h3 class="center title">{{ configs.label }}</h3>
-  <div
+  <form
     class="form-fields"
     cdkDropList
     [cdkDropListData]="fieldsList"
     (cdkDropListDropped)="onDrop($event)"
     #items
   >
-    <form
+    <div
       class="field"
       *ngFor="let field of fieldsInfoArr; let i = index"
       [ngSwitch]="field.type"
@@ -24,36 +24,45 @@
         *ngSwitchCase="FIELDS.Input"
         [configs]="field.style"
         [formControl]="form.controls[field.key]"
+        [error]="getErrorMessage(field)"
       ></app-custom-input>
 
       <app-custom-textarea
         [configs]="field.style"
         *ngSwitchCase="FIELDS.Textarea"
         [formControl]="form.controls[field.key]"
+        [error]="getErrorMessage(field)"
       ></app-custom-textarea>
+
       <app-custom-select
         *ngSwitchCase="FIELDS.Select"
         [configs]="field.style"
         [formControl]="form.controls[field.key]"
+        [error]="getErrorMessage(field)"
       ></app-custom-select>
-      <app-custom-button
-        [configs]="field.style"
-        [width]="'50%'"
-        *ngSwitchCase="FIELDS.Button"
-        [formControl]="form.controls[field.key]"
-      ></app-custom-button>
+
+      <div class="btn" *ngSwitchCase="FIELDS.Button">
+        <app-custom-button
+          [configs]="field.style"
+          [formControl]="form.controls[field.key]"
+          [error]="getErrorMessage(field)"
+        ></app-custom-button>
+      </div>
+
       <app-custom-checkbox
         [configs]="field.style"
         *ngSwitchCase="FIELDS.Checkbox"
         [formControl]="form.controls[field.key]"
+        [error]="getErrorMessage(field)"
       ></app-custom-checkbox>
-    </form>
-  </div>
+    </div>
+  </form>
 </div>
 
-<app-custom-button
-  [width]="'50%'"
-  [buttonText]="'Save form'"
-  (click)="saveForm()"
-  [disabled]="!form.valid"
-></app-custom-button>
+<div class="btn">
+  <app-custom-button
+    buttonText="Save form"
+    (click)="saveForm()"
+    [disabled]="!form.valid"
+  ></app-custom-button>
+</div>

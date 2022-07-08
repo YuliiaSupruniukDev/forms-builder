@@ -21,10 +21,11 @@ import { ICustomCheckbox } from 'src/app/interfaces/fields.interfaces';
   ],
 })
 export class CustomCheckboxComponent implements ControlValueAccessor {
-  private inputValue: string[] ;
+  private inputValue: string[];
 
   checked = this.formBuilder.array([]);
   @Input() configs: ICustomCheckbox = CCustomCheckboxConfiguration;
+  @Input() error?: string = '';
 
   constructor(private formBuilder: FormBuilder) {}
 

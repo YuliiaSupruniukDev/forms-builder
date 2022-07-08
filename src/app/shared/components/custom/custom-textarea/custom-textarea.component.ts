@@ -1,7 +1,8 @@
-import { Component, forwardRef, Input } from '@angular/core';
-import { NG_VALUE_ACCESSOR } from '@angular/forms';
+import { Component, Input, forwardRef } from '@angular/core';
+
 import { CCustomTextareaConfiguration } from 'src/app/constants/formConfigsInitial.constants';
 import { ICustomTextarea } from 'src/app/interfaces/fields.interfaces';
+import { NG_VALUE_ACCESSOR } from '@angular/forms';
 import { ValueController } from 'src/app/shared/services/value-controller.service';
 
 @Component({
@@ -18,4 +19,5 @@ import { ValueController } from 'src/app/shared/services/value-controller.servic
 })
 export class CustomTextareaComponent extends ValueController {
   @Input() configs: ICustomTextarea = CCustomTextareaConfiguration;
+  @Input() error?: string = '';
 }

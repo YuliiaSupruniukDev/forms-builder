@@ -58,9 +58,9 @@ export class FormBuilderComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.observeDeletedFields();
     this.observeFieldStyle();
     this.observeFormStyle();
-    this.observeDeletedFields();
   }
 
   onDrop(event: CdkDragDrop<string[]>): void {
@@ -89,12 +89,14 @@ export class FormBuilderComponent implements OnInit {
     this.form.controls[field.key].setValidators(
       field.style.isRequired ? Validators.required : []
     );
+    this.checkboxReset(field);
   }
 
   pickField(field: IElement): void {
     if (this.currentElement) this.unpickPreviousField();
     const id = this.fieldsInfoArr.indexOf(field);
     this.currentElement = this.items.nativeElement.children[id];
+
     this.currentElementKey = field.key;
     this.renderer.addClass(this.currentElement, 'active');
 
@@ -125,6 +127,7 @@ export class FormBuilderComponent implements OnInit {
           const current = this.fieldsInfoArr.filter(
             (field) => field.key === this.currentElementKey
           )[0];
+
           this.changeValidation(current);
         }
       }
@@ -143,10 +146,26 @@ export class FormBuilderComponent implements OnInit {
   observeDeletedFields(): void {
     const fieldDeletionSubsctiption =
       this.fieldTransferService.deletedField.subscribe((fieldKey: string) => {
+        this.currentElementKey = '';
         this.deleteControl(fieldKey);
       });
 
     this.subs.push(fieldDeletionSubsctiption);
+  }
+
+  checkboxReset(field: IElement) {
+    if (field.type === EFields.Checkbox) {
+      (<FormControl>this.form.controls[field.key]).patchValue('');
+    }
+  }
+
+  getErrorMessage(field: IElement): string {
+    const isInvalid =
+      field.style.isRequired &&
+      !this.form.controls[field.key].value &&
+      this.form.controls[field.key].touched;
+
+    return isInvalid ? 'Is required' : '';
   }
 
   onDestroy(): void {
